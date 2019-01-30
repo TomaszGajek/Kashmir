@@ -1,0 +1,29 @@
+@import './normalizer.scss';
+
+@import url('https://fonts.googleapis.com/css?family=Raleway:400,600,700&subset=latin-ext');
+  // font-family: 'Raleway', sans-serif;
+  @import url('https://fonts.googleapis.com/css?family=Marcellus+SC&subset=latin-ext');
+  // font-family: 'Marcellus SC', serif;
+
+  body {
+    font-family: 'Raleway', sans-serif;
+  }
+
+
+
+  html {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  -webkit-box-sizing: inherit;
+  -moz-box-sizing: inherit;
+  box-sizing: inherit;
+}
+
+.container{
+  width:1720px;
+  margin:0 auto;
+}

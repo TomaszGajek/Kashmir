@@ -1,0 +1,24 @@
+
+.reservation-link{
+   
+    display:block;
+    padding:3px;
+    height:100%;
+    text-decoration: none;
+    border:1px solid black;
+
+    &:hover .reservation-text{
+        background:white;
+        color:black;    
+    }
+    
+}
+
+.reservation-text{
+    background:black;
+    color:#ffffff;
+    text-transform: uppercase;
+    padding:16px;
+    margin:0;
+    transition:all 0.3s ease-in-out;
+}
