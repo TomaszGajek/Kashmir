@@ -31,13 +31,11 @@ export default {
     created(){
         axios.get(`${Config.root}/wp-json/menus/v1/menus/primary`)
             .then((response)=>{                
-                this.pages = response.data.items;
-                console.log(this.pages);                
+                this.pages = response.data.items;               
             })
     },
     data(){
-        return{
-            
+        return{            
             pages:[]
         }
     }

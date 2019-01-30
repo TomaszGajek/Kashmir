@@ -103,43 +103,20 @@ function get_post_id_by_template($template){
     }
   }// get_post_id_by_template
 
-/**
-* Front Page
-*/
-
-
-// function rest_results( $request )
-// {
-//     // Get the ID of the static frontpage. If not set it's 0
-//     $pid  = (int) \get_option( 'page_on_front' );    
-
-//     // Get the corresponding post object (let's show our intention explicitly)
-//     $post = ( $pid > 0 ) ? \get_post( $pid ) : null;  
-
-//     // No static frontpage is set
-//     if( ! is_a( $post, '\WP_Post' ) )
-//         return new \WP_Error( 'wpse-error', 
-//            \esc_html__( 'No Static Frontpage', 'wpse' ), [ 'status' => 404 ] );
-
-//     // Response setup
-//     $data = [
-//         'ID'      => $post->ID,
-//         'content' => [ 'raw' => $post->post_content ]
-//     ];
-
-//     return new \WP_REST_Response( $data, 200 );     
-// }
 
 
 
 add_action( 'rest_api_init', function () {
 
-    // register_rest_route( 'wpse/v1', '/frontpage/', 
-    //     [
-    //         'methods'   => 'GET',
-    //         'callback'  => __NAMESPACE__.'\rest_results'
-    //     ] 
-    // );
+    // CUSTOM POST TYPES
+    $post_types_args = array(
+        'public'   => true,
+        '_builtin' => false
+     );
+ 
+     $post_types = get_post_types( $post_types_args, 'names', 'and' );
+     $posts_post_types = array_merge( array( "post", "posts" ), $post_types);
+     $pages_posts_post_types = array_merge(array( "page", "pages", "post", "posts" ), $post_types);
 
     //register menus
     register_rest_route( 'menus/v1', '/menus', array(
@@ -169,31 +146,28 @@ add_action( 'rest_api_init', function () {
         'callback'=>'wp_rest_page_template_return'
     ]);
 
+     // Add featured_image url to post-details, not just the media-id
+     register_rest_field(  $pages_posts_post_types, "featured_image", array(
+        "get_callback" => function( $post ) {
+            return (object) array(
+                "html"=>get_the_post_thumbnail( $post['id'], 'large' ),
+                "url"=>wp_get_attachment_image_src( get_post_thumbnail_id( $post['id']), 'full', false  ),
+                "url_medium"=>wp_get_attachment_image_src( get_post_thumbnail_id( $post['id']), 'medium'  , false),
+                "url_square"=>wp_get_attachment_image_src( get_post_thumbnail_id( $post['id']), 'square' , false ),
+
+              );
+        },
+        "schema" => array(
+            "description" => __( "Featured Image HTML." ),
+            "type"        => "object"
+        ),
+    ) );
+
 
 } );
 
-add_action( 'rest_api_init', 'create_api_posts_meta_field' );
- 
-// function create_api_posts_meta_field() {
- 
-//  // register_rest_field ( 'name-of-post-type', 'name-of-field-to-return', array-of-callbacks-and-schema() )
-//  register_rest_field( 'page', 'post-meta-fields', array(
-//  'get_callback' => 'get_post_meta_for_api',
-//  'schema' => null,
-//  )
-//  );
-// }
- 
-// function get_post_meta_for_api( $object ) {
-//  //get the id of the post object array
-//  $post_id = $object['id'];
- 
-//  //return the post meta
-//  return get_post_meta( $post_id,'text',true);
-// }
-
-
 add_action( 'rest_api_init', 'slug_register_yoast_seo_meta' );
+
 function slug_register_yoast_seo_meta() {
     register_rest_field( 'page',
         '_yoast_wpseo_title',
@@ -204,6 +178,22 @@ function slug_register_yoast_seo_meta() {
         )
     );
     register_rest_field( 'page',
+        '_yoast_wpseo_metadesc',
+        array(
+            'get_callback'    => 'get_seo_meta_field',
+            'update_callback' => null,
+            'schema'          => null,
+        )
+    );
+    register_rest_field( 'oferta',
+        '_yoast_wpseo_title',
+        array(
+            'get_callback'    => 'get_seo_meta_field',
+            'update_callback' => null,
+            'schema'          => null,
+        )
+    );
+    register_rest_field( 'oferta',
         '_yoast_wpseo_metadesc',
         array(
             'get_callback'    => 'get_seo_meta_field',

@@ -19,8 +19,6 @@ const createStore = () => {
                 axios.get(path)
                     .then(response=>response.data[0])
                     .then(page=>{
-                        console.log(page);
-                        console.log(this.state.page.loading);
                         commit('SET_PAGE',page)
                     })                
             }

@@ -67,6 +67,52 @@ add_action( 'after_setup_theme', function () {
 });
 
 
+function register_post_types() {
+
+	$labels = array(
+	  'name'=>'Oferta',
+	  'singular_name'=>'oferta',
+	  'add_new'=>'Dodaj do Oferty',
+	  'all_items'=>'Wszystko w Ofercie',
+	  'add_new_item'=>'Dodaj',
+	  'edit_item'=>'Edytuj',
+	  'new_item'=>'Nowa',
+	  'view_item'=>'Zobacz',
+	  'search_item'=>'Search Portfolio',
+	  'not_found'=>'No items found',
+	  'not_found_in_trash'=>'No items found in trash',
+	  'parent_item_colon'=>'Parent Item'
+  );
+  
+  $args = array(
+	  'labels'=>$labels,
+	  'public'=>true,
+	  'has_archive'=>true,
+	  'publicly_queryable'=>true,
+	  'query_var'=>true,
+	  'rewrite'=>true,
+	  'capability_type'=>'post',
+	  'hierarchical'=>false,
+	  'show_in_rest' => true,
+	  'supports'=> array(
+		  'title',
+		  'editor',
+		  'comments',
+		  'exerpt',
+		  'thumbnail',
+		  'revisions'
+	  ),
+	  'taxonomies'=> array('category'),
+	  'menu_position'=>4,
+	  'exclude_from_search'=> false
+  );
+  register_post_type('oferta',$args); 
+
+}
+
+add_action( 'init','register_post_types');
+
+
 add_filter('theme_templates', 'vsdfvsdvsdvf');
 
 function vsdfvsdvsdvf($templates = array()){
