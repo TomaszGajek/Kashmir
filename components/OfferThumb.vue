@@ -5,7 +5,7 @@
             <img src="~/assets/images/symbol-2.png"/>
             <h4 class="text">Oferta</h4>
             <h2>{{this.item.title.rendered}}</h2>
-            <nuxt-link class="link-button" :to="item.link">
+            <nuxt-link class="link-button" :to="`oferta/${item.slug}`">
                 <span class="link-button__text">Sprawdź</span>
             </nuxt-link>
             </div>
@@ -29,9 +29,6 @@ export default {
         return{
             imgUrl: this.item.featured_image.url[0]
         }
-    },
-    mounted(){
-        console.log(this.item);
     }
 }
 </script>

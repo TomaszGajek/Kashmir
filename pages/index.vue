@@ -27,7 +27,7 @@
             <h2>{{this.page.acf.review_slogan}}</h2>
             <img src="~/assets/images/symbol.png"/>
         </div>
-        <ReviewSlider/>
+        <ReviewSlider :page="page"/>
     </section>
     </main>
 </template>
@@ -59,7 +59,7 @@ export default {
     async asyncData({ query, error }) {
         let [page, offer] = await Promise.all([
             axios.get(`${Config.root}/wp-json/wp/v2/pages/?slug=strona-glowna`),
-            axios.get(`${Config.root}/wp-json/wp/v2/oferta/?per_page=100`),
+            axios.get(`${Config.root}/wp-json/wp/v2/oferta/?per_page=100`)
         ])
         return {
             page: page.data[0],
@@ -69,13 +69,13 @@ export default {
     data(){
         return {
             page:{},
-            offer: []
+            offer: [],
+            footer:{}
         }
     },
     mounted(){
-        console.log(this.page);
-        console.log(this.offer);
-        
+       
+        console.log(this.offer);     
     },
     computed:{
         rowCount(){

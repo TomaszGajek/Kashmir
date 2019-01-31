@@ -31,6 +31,8 @@
 }
 
 .review{
+    background:#f4f5f7;
+    
     p {
         max-width:550px;
     }
@@ -41,7 +43,7 @@
         display:flex;
         flex-direction: column;
         align-items:center;
-        padding:3% 26%;
+        padding:3% 26% 0% 26%;
         text-align:center;
     }
 }

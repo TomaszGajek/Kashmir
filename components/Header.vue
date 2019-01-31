@@ -46,3 +46,4 @@ export default {
     @import '@/assets/css/components/Header.scss';
 
 </style>
+
