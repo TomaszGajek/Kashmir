@@ -1,5 +1,5 @@
 const Config = {
-    root:'http://kashmir.localhost.pl'
+    root:'http://kashmir.devnoveo.pl/wp'
 }
 
 export default Config;

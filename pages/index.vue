@@ -16,9 +16,18 @@
         </div>
     </section>
     <section class="offer">
-        <div class="container">
-            <OfferThumb v-for="(item,index) in offer" :key="index" :item="item"/>
+        <div class="offer__wrap" v-for="i in rowCount"> 
+            <OfferThumb v-for="(item,index) in offer.slice((i-1)*6,i*6)" :key="index" :item="item" />
         </div>
+    </section>
+    <section class="review">
+        <div class="container review__container">
+            <img src="~/assets/images/flower.png" />
+            <h4 class="text">{{this.page.acf.review_text}}</h4>
+            <h2>{{this.page.acf.review_slogan}}</h2>
+            <img src="~/assets/images/symbol.png"/>
+        </div>
+        <ReviewSlider/>
     </section>
     </main>
 </template>
@@ -30,12 +39,14 @@ import axios from 'axios';
 import MainSlider from '@/components/MainSlider';
 import LinkButton from '@/components/LinkButton';
 import OfferThumb from '@/components/OfferThumb';
+import ReviewSlider from '@/components/ReviewSlider';
 
 export default {
     components:{
         MainSlider,
         LinkButton,
-        OfferThumb
+        OfferThumb,
+        ReviewSlider
     }, 
     head () {
         return {
@@ -48,7 +59,7 @@ export default {
     async asyncData({ query, error }) {
         let [page, offer] = await Promise.all([
             axios.get(`${Config.root}/wp-json/wp/v2/pages/?slug=strona-glowna`),
-            axios.get(`${Config.root}/wp-json/wp/v2/oferta/`),
+            axios.get(`${Config.root}/wp-json/wp/v2/oferta/?per_page=100`),
         ])
         return {
             page: page.data[0],
@@ -64,6 +75,12 @@ export default {
     mounted(){
         console.log(this.page);
         console.log(this.offer);
+        
+    },
+    computed:{
+        rowCount(){
+            return Math.ceil(this.offer.length / 6);
+        }
     }
  
 

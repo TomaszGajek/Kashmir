@@ -153,7 +153,7 @@ add_action( 'rest_api_init', function () {
                 "html"=>get_the_post_thumbnail( $post['id'], 'large' ),
                 "url"=>wp_get_attachment_image_src( get_post_thumbnail_id( $post['id']), 'full', false  ),
                 "url_medium"=>wp_get_attachment_image_src( get_post_thumbnail_id( $post['id']), 'medium'  , false),
-                "url_square"=>wp_get_attachment_image_src( get_post_thumbnail_id( $post['id']), 'square' , false ),
+                "url_large"=>wp_get_attachment_image_src( get_post_thumbnail_id( $post['id']), 'large' , false ),
 
               );
         },
