@@ -5,11 +5,17 @@
   @import url('https://fonts.googleapis.com/css?family=Marcellus+SC&subset=latin-ext');
   // font-family: 'Marcellus SC', serif;
 
+
+  .page-enter-active, .page-leave-active {
+    transition: opacity .5s;
+  }
+  .page-enter, .page-leave-to {
+    opacity: 0;
+  }
+
   body {
     font-family: 'Raleway', sans-serif;
   }
-
-
 
   html {
   -webkit-box-sizing: border-box;
@@ -35,6 +41,12 @@ h4.text {
   font-weight:400;
 }
 
+h1 {
+  color:black;
+  font-weight:400;
+  font-size:40px;
+  font-family: "Marcellus SC", serif;
+}
 h2{
   color:black;
   font-weight:400;
@@ -42,9 +54,10 @@ h2{
   font-family: "Marcellus SC", serif;
 }
 
+
 p{
   font-size:14px;
   font-weight:400;
   color:#959595;
-  line-height:1.5;
+  line-height:2;
 }

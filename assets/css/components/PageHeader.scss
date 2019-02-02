@@ -1,0 +1,26 @@
+.page-baner{
+    background:#f3f4f6;
+    padding:30px;
+    text-align: center;
+
+}
+
+.bread-crumbs {
+    font-size:12px;
+    font-weight:700;
+    
+    a,span {
+        color:#acacac;
+        text-decoration:none;
+        text-transform:uppercase;
+        transition:all 0.3s ease-in-out;
+    }
+    a:hover{
+        color:#555555;
+    }
+
+    a.nuxt-link-exact-active{
+        color:#555555;
+    }
+
+}

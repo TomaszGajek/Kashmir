@@ -1,0 +1,91 @@
+.team-preview{
+    display:block;
+    text-align: center;
+    text-decoration:none;
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+    width:33.33%;
+    padding:20px 80px;
+
+    &:hover .team-preview__line {
+        span:nth-child(1){            
+            width:100%;
+        }
+        span:nth-child(2){            
+            height:100%;
+        }
+        span:nth-child(3){            
+            width:100%;
+        }
+        span:nth-child(4){            
+            height:100%;
+        }
+    }
+
+    &__line{
+        position:relative;
+        span{
+            position:absolute;
+            background:black;
+            display:block;
+            transition:all 0.6s ease-in-out;
+        }
+        span:nth-child(1){                        
+            top:0;
+            left:0;
+            width:0;  
+            height:1px;          
+        }
+        span:nth-child(2){
+            top:0;
+            right:0;
+            width:1px;
+            height:0;
+        }
+
+        span:nth-child(3){
+            bottom:0;
+            right:0;
+            width:0;
+            height:1px;
+        }
+
+        span:nth-child(4){
+            bottom:0;
+            left:0;
+            width:1px;
+            height:0;
+        }
+
+    }
+
+    &__image{
+        background-repeat:no-repeat;
+        background-size:cover;
+        background-position:center;
+        height:190px;
+        width:190px;
+        margin:10px;
+    }
+
+    &__title{
+        font-family: 'Marcellus SC', serif;
+        font-size:24px;
+        color:black;
+        font-weight: 400;
+        margin-bottom:0;
+    }
+    &__role{
+        font-size:12px;
+        text-transform:uppercase;
+        color:#959595;
+        font-weight: 400;
+    }
+    &__text{
+        font-size:14px;
+
+    }
+
+}
+

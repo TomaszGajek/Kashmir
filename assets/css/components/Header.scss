@@ -16,10 +16,12 @@ header{
         display:flex;
         margin:0;
         padding:0;
+        
     }
-    
+
     &__item{
         list-style: none;
+        
     }
     &__link{
         text-decoration:none;
@@ -34,4 +36,13 @@ header{
             color:black;
         }
     }
+
+    &__sub-list{
+        display:none;
+    }
+    &__sub-list.open{
+        display:block;
+    }
+
+    
 }
