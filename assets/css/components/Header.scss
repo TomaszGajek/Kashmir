@@ -4,6 +4,12 @@ header{
 
 .navigation{
     padding:10px 0;
+    position:fixed;
+    width:100%;
+    // top:0;
+    // left:0;
+    background:#ffffff;
+    z-index:1030;
     &__container{
         display:flex;
         justify-content: space-between;
@@ -11,6 +17,7 @@ header{
     }
     &__wrapper{
         display:flex;
+        align-items:center;
     }
     &__list{
         display:flex;
@@ -35,14 +42,22 @@ header{
         &:hover{
             color:black;
         }
+        position:relative;
     }
 
     &__sub-list{
-        display:none;
+        position:absolute;
+        z-index:2;
+        transition: all 0.3s ease-in-out;
+        opacity:0;
+        visibility: hidden;
     }
     &__sub-list.open{
-        display:block;
+        
+        visibility:visible;
+        opacity:1;
     }
 
     
 }
+

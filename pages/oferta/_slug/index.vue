@@ -1,10 +1,9 @@
 <template>
     <div>
-            <h1>
-                {{$route.params.slug}}
-            </h1>
-            <div class="content" v-html="page.content.rendered"></div> 
-        </div>
+        <h1>
+            {{$route.params.slug}}
+        </h1>
+        <div class="content" v-html="page.content.rendered"></div> 
     </div>
 </template>
 

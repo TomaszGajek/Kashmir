@@ -1,5 +1,5 @@
 <template>
-    <main>
+    <div>
     <section class="intro">
         <div class="container">
             <MainSlider :page="page"/>
@@ -29,7 +29,7 @@
         </div>
         <ReviewSlider :page="page"/>
     </section>
-    </main>
+    </div>
 </template>
 
 <script>

@@ -1,0 +1,92 @@
+.gallery {
+    .gallery-flower{
+        text-align:center;
+    }
+    .gallery-buttons{
+        display:flex;
+        justify-content: center;
+        align-items:center;
+    }
+    
+    .link-button.is-active{
+        background:black;
+    }
+    
+    .fade-enter-active, .fade-leave-active {
+        transition: opacity .5s;
+       
+    }
+    .fade-enter, .fade-leave-to  {
+        opacity: 0;
+        
+    }
+    
+    .link-button {
+        cursor:pointer;
+        margin:20px 10px;
+    }
+    .link-button.active{
+        border:1px solid black;
+        .link-button__text{
+            background:black;
+        }
+    }
+
+    .image-line{
+        position:relative;
+        cursor:pointer;
+
+        span{
+            position:absolute;
+            background:black;
+            display:block;
+            transition:all 0.6s ease-in-out;
+        }
+        span:nth-child(1){                        
+            top:0;
+            left:0;
+            width:0;  
+            height:1px;          
+        }
+        span:nth-child(2){
+            top:0;
+            right:0;
+            width:1px;
+            height:0;
+        }
+
+        span:nth-child(3){
+            bottom:0;
+            right:0;
+            width:0;
+            height:1px;
+        }
+
+        span:nth-child(4){
+            bottom:0;
+            left:0;
+            width:1px;
+            height:0;
+        }
+
+        &:hover{
+            span:nth-child(1){            
+                width:100%;
+            }
+            span:nth-child(2){            
+                height:100%;
+            }
+            span:nth-child(3){            
+                width:100%;
+            }
+            span:nth-child(4){            
+                height:100%;
+            }
+
+        }
+
+    }
+    
+
+}
+
