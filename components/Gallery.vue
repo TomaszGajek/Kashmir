@@ -10,7 +10,7 @@
         <div
             class="image"
             @click="index = imageIndex"
-            :style="{ backgroundImage: 'url(' + image.sizes.large + ')', width: '300px', height: '200px' }"
+            :style="{ backgroundImage: 'url(' + image.sizes.large + ')', width: '400px', height: '400px' }"
             ></div>
     </div>    
     </div>
@@ -72,7 +72,7 @@ export default {
     background-repeat: no-repeat;
     background-position: center center;
     border: 1px solid #ebebeb;
-    margin: 5px;
+    margin: 6px;
     transition:all 0.3s ease-in-out;
   }
 

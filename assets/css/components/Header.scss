@@ -2,7 +2,12 @@ header{
     
 }
 
+.navigation.isScrolling{
+    box-shadow:0px 0px 21px 0px rgba(0, 0, 0, 0.3);
+
+}
 .navigation{
+    transition:all 0.3s ease-in-out;
     padding:10px 0;
     position:fixed;
     width:100%;
@@ -47,17 +52,36 @@ header{
 
     &__sub-list{
         position:absolute;
-        z-index:2;
+       
         transition: all 0.3s ease-in-out;
         opacity:0;
         visibility: hidden;
+        background:#e2e5e8;
+        top:103px;
+        padding:0;
+        width: 100%;
+        left: 0;
+        display: flex;
+        justify-content: center;
+        // box-shadow: 0px 3px 11px -1px rgba(0,0,0,0.35);
     }
     &__sub-list.open{
         
         visibility:visible;
         opacity:1;
     }
+    &__sub-item {
+        list-style:none;
+    }
+    &__sub-item a {
+        text-decoration:none;
+        text-transform:uppercase;
+        color:#555555;
+        font-size:14px;
+        padding:10px 20px;
+        display:block;
 
+    }
     
 }
 

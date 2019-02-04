@@ -1,0 +1,29 @@
+.price-list{
+    margin-bottom:40px;
+
+    &__box{
+        
+    }
+    &__image{
+        display:block;
+        margin:30px auto;
+    }
+    &__title{
+        text-align:center;
+        display:block;
+    }
+    &__content{
+        display:flex;
+        justify-content: space-between;
+        padding:10px 20px;
+        p{
+            text-transform:uppercase;
+            // font-weight: 700;
+            letter-spacing: 1px;
+            color:black;
+        }
+    }
+    &__content:nth-child(even){
+        background:#f3f4f6;
+    }
+}

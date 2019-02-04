@@ -1,6 +1,6 @@
 <template>
     <header>
-    <nav class="navigation">
+    <nav class="navigation" :class="[ isScrolling ? 'isScrolling' : '' ]">
         <div class="container navigation__container">
             <nuxt-link to="/" ><img  class="navigation__logo" src="~/assets/images/logo.png"/></nuxt-link>
             <div class="navigation__wrapper">
@@ -35,6 +35,7 @@
 
 <script>
 
+
 import axios from 'axios';
 import Config from '@/config.js';
 import Socials from '@/components/Socials';
@@ -47,34 +48,22 @@ export default {
         Socials,
         Reservation
     },
-    created(){
-        axios.get(`${Config.root}/wp-json/menus/v1/menus/primary`)
-            .then((response)=>{                
-                this.pages = response.data.items;      
-                // console.log(this.pages);          
-            }).then(()=>{
-                const items = document.querySelectorAll('.navigation__sub-item');
-                if(items.length>0){
-                    items.forEach((elem)=>{
-                        // console.log(elem.parentNode.parentNode.firstChild);
-                        elem.parentNode.classList.add('navigation__sub-list');
-                        elem.parentNode.parentNode.firstChild.classList.add('navigation__link-dropdown')
-                    })
-                }
-            })
-    },
+    
     methods:{
         toggleSubMenu(e){
             let parent = e.currentTarget.parentNode;
             let child = parent.querySelector('.navigation__sub-list')
-            console.log( child);
+
             if(child != null){
                 child.classList.toggle('open');
             }
-            // if(e.currentTarget.classList.contains('navigation__link-dropdown')){
-            //     console.log(e.currentTarget.parentNode.querySelector('.navigation__sub-list'));
-            //     // e.currentTarget.nextSibling.classList.toggle('active');
-            // }
+        },
+        handleScroll: function(e){ 
+            if(window.scrollY>0){
+                this.isScrolling = true
+            } else {
+                this.isScrolling = false
+            }       
         }
     },
     computed:{
@@ -82,15 +71,38 @@ export default {
             return this.pages.filter((elem)=>{
                 return elem.menu_item_parent == 0
             });
-        },
+        }
+         
     },
     data(){
         return{            
             pages:[],
-            isDropped: false
+            isDropped: false,
+            isScrolling:false
             
         }
-    }
+    },
+    created(){
+        axios.get(`${Config.root}/wp-json/menus/v1/menus/primary`)
+            .then((response)=>{                
+                this.pages = response.data.items;      
+                         
+            }).then(()=>{
+                const items = document.querySelectorAll('.navigation__sub-item');
+                if(items.length>0){
+                    items.forEach((elem)=>{
+                        
+                        elem.parentNode.classList.add('navigation__sub-list');
+                        elem.parentNode.parentNode.firstChild.classList.add('navigation__link-dropdown')
+                    })
+                }
+        });
+        window.addEventListener('scroll', this.handleScroll);
+    },
+    destroyed() {
+        window.removeEventListener('scroll', this.handleScroll);
+    }  
+    
 }
 </script>
 

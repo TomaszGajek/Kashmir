@@ -42,17 +42,7 @@ module.exports = {
   */
   modules: [
     // Doc: https://github.com/nuxt-community/axios-module#usage
-    '@nuxtjs/axios',
-    ['nuxt-fontawesome', {
-      component: 'fa', 
-      imports: [
-        //import whole set
-        {
-          set: '@fortawesome/free-brands-svg-icons',
-          icons: ['fab']
-        }
-      ]
-    }]
+    '@nuxtjs/axios'
   ],
   /*
   ** Axios module configuration
@@ -70,10 +60,14 @@ module.exports = {
     */
     extractCSS: true,
 
+    performance: { hints: false },
+    
+
     extend(config, ctx) {
       
 
-    }
+    },
+
 
   }
 }
