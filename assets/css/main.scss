@@ -29,12 +29,15 @@
   box-sizing: inherit;
 }
 
+#edit-slug-box {
+  display:none !important;
+}
 main {
   padding-top:103px;
 }
 
 .container{
-  width:1720px;
+  width:1520px;
   margin:0 auto;
 }
 
@@ -58,8 +61,22 @@ h2{
   font-family: "Marcellus SC", serif;
 }
 
+.content h2 {
+  margin:40px 0;
+}
 
 p{
+  font-size:14px;
+  font-weight:400;
+  color:#959595;
+  line-height:2;
+}
+
+ul,ol {
+  padding-left:15px;
+}
+ul li,
+ol li{
   font-size:14px;
   font-weight:400;
   color:#959595;
@@ -68,4 +85,17 @@ p{
 .symbol-bottom{
   display:block;
   margin:40px auto;
+}
+
+.aligncenter{
+  display:block;
+  margin:40px auto;
+}
+
+iframe {
+  width:100%;
+  // max-width:800px;
+  margin: 0 auto;
+  height:600px;
+  display:block;
 }

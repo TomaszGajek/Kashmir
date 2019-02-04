@@ -1,10 +1,17 @@
 <template>
-    <div>
-        <h1>
-            {{$route.params.slug}}
-        </h1>
-        <div class="content" v-html="page.content.rendered"></div> 
-    </div>
+    <section class="offer-single">
+        <div class="page-baner">
+            <h1>{{this.page.title.rendered}}</h1>
+            <div class="bread-crumbs">
+                <nuxt-link to="/">Start</nuxt-link>
+                <span>/</span>
+                <nuxt-link to="/oferta">Oferta</nuxt-link>
+                <span>/</span>
+                <nuxt-link :to="`/${page.slug}`" class="">{{this.page.title.rendered}}</nuxt-link>
+            </div>
+        </div>
+        <div class="container content" v-html="page.content.rendered"></div> 
+    </section>
 </template>
 
 <script>
@@ -41,3 +48,6 @@ export default {
 
 }
 </script>
+<style lang="scss">
+    @import '@/assets/css/pages/offer-single.scss';
+</style>

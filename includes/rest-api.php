@@ -47,13 +47,13 @@ function send_contact_form(WP_REST_Request $request){
     $errors = [];
 
     if(empty($full_name)) {
-        $errors[] = "Name is required";
+        $errors[] = "Imię jest wymagane";
     }
     if(empty($email) || ! filter_var($email,FILTER_VALIDATE_EMAIL)){
-        $errors[]= "Valid Email is required";
+        $errors[]= "Adres E-mail jest wymagany";
     }
     if(empty($body)){
-        $errors[]="Message is required";
+        $errors[]="Wiadomość jest wymagana";
     }
     if(count($errors)) {
         return new WP_Error('contact_form_errors',$errors,['status'=>422]);
@@ -102,8 +102,6 @@ function get_post_id_by_template($template){
       return false;
     }
   }// get_post_id_by_template
-
-
 
 
 add_action( 'rest_api_init', function () {

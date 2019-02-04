@@ -3,20 +3,30 @@
         <PageHeader :page="page" />
         <div class="container about__container">
             <img src="~/assets/images/flower.png" />
+        </div>
+        <div class="contact-info" v-html="this.page.content.rendered">
+
+        </div>
+        <div class="container about__container">
+            <img src="~/assets/images/flower.png" />
             <h2>{{this.page.acf.contact_slogan}}</h2>
             <img src="~/assets/images/symbol.png"/>
         </div>
+        <Kontakt/>
     </div>
+    
 </template>
 
 <script>
 import axios from 'axios';
 import Config from '@/config.js';
 import PageHeader from '@/components/PageHeader';
+import Kontakt from '@/components/Kontakt';
 
 export default {
     components:{
-        PageHeader
+        PageHeader,
+        Kontakt
     },
     head () {
         return {
@@ -26,17 +36,14 @@ export default {
             ]
         }
     },
-    asyncData ({ params }) {
-        return axios.get(`${Config.root}/wp-json/wp/v2/pages/?slug="kontakt"`)
-        .then(response => {
-            console.log(response.data);
-            return { 
-                        page: response.data[0]                    
-                    }
-        })
-        .catch((error) => {
-            return { error: error }
-        })
+
+    async asyncData({ query, error }) {
+        let [page] = await Promise.all([
+            axios.get(`${Config.root}/wp-json/wp/v2/pages/?slug="kontakt"`)
+        ])
+        return {
+            page: page.data[0]            
+        }
     },
     data() {
         return {
@@ -46,3 +53,6 @@ export default {
     }
 }
 </script>
+<style lang="scss">
+    @import '@/assets/css/pages/kontakt.scss';
+</style>

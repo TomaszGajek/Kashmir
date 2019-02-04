@@ -16,23 +16,7 @@ export default {
   components:{
     Header,
     Footer
-  },
-  // async asyncData({ query, error }) {
-  //       let [footer] = await Promise.all([
-  //           axios.get(`${Config.root}/wp-json/acf/v3/options/options`)
-  //       ])
-  //       return {
-  //           footer: page.data
-  //       }
-  //   },
-  //   data(){
-  //       return {
-  //           footer:{}
-  //       }
-  //   },
-  //   mounted(){
-  //       console.log(this.footer);        
-  //   },
+  }    
 }
 </script>
 
