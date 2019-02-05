@@ -1,17 +1,22 @@
 <template>
-    <section class="offer-single">
-        <div class="page-baner">
-            <h1>{{this.page.title.rendered}}</h1>
-            <div class="bread-crumbs">
-                <nuxt-link to="/">Start</nuxt-link>
-                <span>/</span>
-                <nuxt-link to="/oferta">Oferta</nuxt-link>
-                <span>/</span>
-                <nuxt-link :to="`/${page.slug}`" class="">{{this.page.title.rendered}}</nuxt-link>
+    <div>
+        <section class="offer-single">
+            <div class="page-baner">
+                <h1>{{this.page.title.rendered}}</h1>
+                <div class="bread-crumbs">
+                    <nuxt-link to="/">Start</nuxt-link>
+                    <span>/</span>
+                    <nuxt-link to="/oferta">Oferta</nuxt-link>
+                    <span>/</span>
+                    <nuxt-link :to="`/${page.slug}`" class="">{{this.page.title.rendered}}</nuxt-link>
+                </div>
             </div>
-        </div>
-        <div class="container content" v-html="page.content.rendered"></div> 
-    </section>
+            <div class="container container--narrow" v-if="page.acf.background">
+                <div class="offer-bg" v-lazy:background-image="page.acf.background"></div>
+            </div>
+            <div class="container content container--narrow" v-html="page.content.rendered"></div> 
+        </section>
+    </div>
 </template>
 
 <script>
@@ -32,8 +37,7 @@ export default {
     asyncData ({ params }) {
         return axios.get(`${Config.root}/wp-json/wp/v2/oferta/?slug=${params.slug}`)
             .then(response => {
-                console.log(response.data);
-                return { page: response.data[0] }
+                return { page: response.data[0] } 
             })
             .catch((error) => {
                 return { error: error }

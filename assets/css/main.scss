@@ -40,6 +40,9 @@ main {
   width:1520px;
   margin:0 auto;
 }
+.container--narrow{
+  width:1180px;
+}
 
 h4.text {
   color:#959595;
@@ -70,6 +73,15 @@ p{
   font-weight:400;
   color:#959595;
   line-height:2;
+}
+
+a {
+  transition:all 0.3s ease-in-out;
+  text-decoration:none;
+  color:#628600;
+  &:hover{
+    color:darkred;
+  }
 }
 
 ul,ol {

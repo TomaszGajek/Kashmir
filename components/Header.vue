@@ -11,14 +11,18 @@
                             :to="page.link" 
                             :id="page.ID" 
                             @click.native="toggleSubMenu" >
-                            {{page.title}}                            
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            {{page.title}}                          
                         </nuxt-link>
                         <transition name="slide">
                         <ul>                
                             <li class="navigation__sub-item" 
                                 v-for="item in pages" 
                                 v-if="item.menu_item_parent == page.ID">
-                                <nuxt-link :to="item.link">{{item.title}}</nuxt-link>
+                                <nuxt-link :to="item.link"><span>{{item.title}}</span></nuxt-link>
                             </li>
                         </ul>   
                         </transition>                 
@@ -30,6 +34,9 @@
             </div>
         </div>
     </nav>
+    <div class="arrow-down" v-if="isScrolling" @click="this.returnTop">
+        <img src="~/assets/images/arrow-up.png"/>
+    </div>
     </header>
 </template>
 
@@ -40,8 +47,6 @@ import axios from 'axios';
 import Config from '@/config.js';
 import Socials from '@/components/Socials';
 import Reservation from '@/components/Reservation';
-// import { Promise } from 'q';
-
 
 export default {
     components:{
@@ -53,9 +58,10 @@ export default {
         toggleSubMenu(e){
             let parent = e.currentTarget.parentNode;
             let child = parent.querySelector('.navigation__sub-list')
-
+            
             if(child != null){
                 child.classList.toggle('open');
+                parent.classList.toggle('color');
             }
         },
         handleScroll: function(e){ 
@@ -64,7 +70,11 @@ export default {
             } else {
                 this.isScrolling = false
             }       
+        },
+        returnTop(){
+            window.scrollTo({top:0,left:0,behavior:"smooth"});
         }
+
     },
     computed:{
         parent(){
@@ -73,6 +83,11 @@ export default {
             });
         }
          
+    },
+    watch:{
+        '$route'(){
+            document.querySelector('.navigation__sub-list').classList.remove('open');
+        }
     },
     data(){
         return{            

@@ -1,35 +1,37 @@
 <template>
-    <div>
-    <section class="intro">
-        <div class="container">
-            <MainSlider :page="page"/>
-        </div>
+    <section class="main-page">
+        <div class="main-page-overlay"></div>
+        <section class="intro">
+            <div class="container">
+                <MainSlider :page="page"/>
+            </div>
+            
+        </section>
+        <section class="about">
+            <div class="container about__container">
+                <img src="~/assets/images/flower.png" />
+                <h4 class="text">{{this.page.acf.about_text}}</h4>
+                <h2>{{this.page.acf.about_slogan}}</h2>
+                <img src="~/assets/images/symbol.png"/>
+                <p>{{this.page.acf.about_description}}</p>
+                <LinkButton :link="page.acf.about_link"/>
+            </div>
+        </section>
+        <section class="offer">
+            <div class="offer__wrap" v-for="i in rowCount"> 
+                <OfferThumb v-for="(item,index) in offer.slice((i-1)*6,i*6)" :key="index" :item="item" />
+            </div>
+        </section>
+        <section class="review">
+            <div class="container review__container">
+                <img src="~/assets/images/flower.png" />
+                <h4 class="text">{{this.page.acf.review_text}}</h4>
+                <h2>{{this.page.acf.review_slogan}}</h2>
+                <img src="~/assets/images/symbol.png"/>
+            </div>
+            <ReviewSlider :page="page"/>
+        </section>
     </section>
-    <section class="about">
-        <div class="container about__container">
-            <img src="~/assets/images/flower.png" />
-            <h4 class="text">{{this.page.acf.about_text}}</h4>
-            <h2>{{this.page.acf.about_slogan}}</h2>
-            <img src="~/assets/images/symbol.png"/>
-            <p>{{this.page.acf.about_description}}</p>
-            <LinkButton :link="page.acf.about_link"/>
-        </div>
-    </section>
-    <section class="offer">
-        <div class="offer__wrap" v-for="i in rowCount"> 
-            <OfferThumb v-for="(item,index) in offer.slice((i-1)*6,i*6)" :key="index" :item="item" />
-        </div>
-    </section>
-    <section class="review">
-        <div class="container review__container">
-            <img src="~/assets/images/flower.png" />
-            <h4 class="text">{{this.page.acf.review_text}}</h4>
-            <h2>{{this.page.acf.review_slogan}}</h2>
-            <img src="~/assets/images/symbol.png"/>
-        </div>
-        <ReviewSlider :page="page"/>
-    </section>
-    </div>
 </template>
 
 <script>

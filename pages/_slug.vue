@@ -1,13 +1,12 @@
 
 <template>
     <div>
-        <!-- <div v-if="this.$store.state.page.loading === false"> -->
-            <h1>
-                {{$route.params.slug}}
-            </h1>
-            <div class="content" v-html="page.content.rendered"></div> 
-        </div>
-        <!-- <div v-else>Loading...</div>  -->
+        <section>
+            <PageHeader :page="page"/>
+            <div class="container container--narrow">
+                <div class="content" v-html="page.content.rendered"></div> 
+            </div>
+        </section>
     </div>
 </template>
 
@@ -15,28 +14,12 @@
 
 import axios from 'axios';
 import Config from '@/config.js';
-// import {mapState} from 'vuex';
+import PageHeader from '@/components/PageHeader';
 
 export default {
-
-    // created(){  
-    //     console.log(this.$store.state.page.loading);
-    //     this.$store.dispatch('loadPage',this.$route.params.slug);        
-    // }, 
-
-    // computed: {
-    //     ...mapState([
-    //         'page'
-    //     ])
-    // },
-
-    // data(){
-    //     return{
-    //         data : '',
-    //         content:''
-    //     }
-    // }
-
+    components:{
+        PageHeader
+    },
     head () {
         return {
             title: this.page._yoast_wpseo_title,
@@ -47,9 +30,8 @@ export default {
     },
     asyncData ({ params }) {
         return axios.get(`${Config.root}/wp-json/wp/v2/pages/?slug=${params.slug}`)
-        .then(response => {
-            console.log(response.data);
-            return { page: response.data[0] }
+        .then(response => {            
+            return { page: response.data[0] }                     
         })
         .catch((error) => {
             return { error: error }
@@ -57,8 +39,9 @@ export default {
     },
     data() {
         return {
-        page: {},
-        error: []
+            page: {},
+            error: [],
+            empty: false
         }
     }
 

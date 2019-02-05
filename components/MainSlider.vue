@@ -48,8 +48,13 @@ export default {
 
       return {
         swiperOption: {
-          lazy:true,  
+          lazy:{
+              loadPrevNext:true
+          },
           spaceBetween: 30,
+          autoplay: {
+                delay: 3000,
+            },
           effect: 'fade',
           pagination: {
             el: '.swiper-pagination',

@@ -1,11 +1,9 @@
 <template>
     <section class="offer-single">
-        <div class="page-baner">            
+        <div class="page-baner">
             <h1>{{this.page.title.rendered}}</h1>
             <div class="bread-crumbs">
                 <nuxt-link to="/">Start</nuxt-link>
-                <span>/</span>
-                <span>Cennik</span>
                 <span>/</span>
                 <nuxt-link :to="`/${page.slug}`" class="">{{this.page.title.rendered}}</nuxt-link>
             </div>
@@ -49,7 +47,7 @@ export default {
         }
     },
     asyncData ({ params }) {
-        return axios.get(`${Config.root}/wp-json/wp/v2/cennik/?slug=${params.slug}`)
+        return axios.get(`${Config.root}/wp-json/wp/v2/pages/?slug=promocje`)
             .then(response => {
                 console.log(response.data);
                 return { 
@@ -67,11 +65,13 @@ export default {
             page: {},
             price_list: []
         }
+    },
+    mounted(){
+        console.log(this.page);
     }
 
 }
 </script>
-<style lang="scss" scoped>
-    @import '@/assets/css/pages/price-single.scss';    
-
+<style lang="scss">
+     @import '@/assets/css/pages/price-single.scss';   
 </style>
