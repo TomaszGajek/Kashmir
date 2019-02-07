@@ -10,8 +10,12 @@
         display:block;
     }
     &__content{
+        display:-webkit-box;
+        display:-ms-flexbox;
         display:flex;
-        justify-content: space-between;
+        -webkit-box-pack: justify;
+            -ms-flex-pack: justify;
+                justify-content: space-between;
         padding:10px 20px;
         p{
             text-transform:uppercase;

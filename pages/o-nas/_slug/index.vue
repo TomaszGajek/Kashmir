@@ -34,6 +34,7 @@ export default {
             ]
         }
     },
+    
     asyncData ({ params }) {
         return axios.get(`${Config.root}/wp-json/wp/v2/zespol/?slug=${params.slug}`)
         .then(response => {

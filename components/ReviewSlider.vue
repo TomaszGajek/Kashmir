@@ -1,6 +1,9 @@
 <template>
     <div class="review-wrapper">
+        <img class="rieview-wrapper-q--left" src="~/assets/images/qleft.png"/>
+        <img class="rieview-wrapper-q--right" src="~/assets/images/qright.png"/>
         <swiper :options="swiperOption" class="review-slider">
+            
             <swiper-slide 
                 class="swiper-lazy review-slider__slide" 
                 v-for="(item,index) in this.page.acf.review_slider" 
@@ -42,6 +45,10 @@ export default {
         return{
             swiperOption: {
                 spaceBetween: 30,
+                autoplay: {
+                    delay: 4000,
+                },
+                loop:true,
                 pagination: {
                     el: '.review-swiper-pagination',
                     clickable: true

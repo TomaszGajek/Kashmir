@@ -51,32 +51,41 @@ export default {
 <style scoped>
 
   .html,body{
-      overflow:hidden;
-  }  
+    overflow:hidden;
+}  
 
 
-  .gallery-container{
-      display:flex;
-      flex-direction: column;
-      overflow:hidden;
-  }  
-  .gallery-wrapper{
-      display:flex;
-      flex-wrap:wrap;
-      width:1240px;
-      margin:0 auto;
-      overflow:auto;
-  }  
-  .image {
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
-    border: 1px solid #ebebeb;
-    margin: 6px;
-    transition:all 0.3s ease-in-out;
-  }
+.gallery-container{
+    display:-webkit-box;
+    display:-ms-flexbox;
+    display:flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    overflow:hidden;
+}  
+.gallery-wrapper{
+    display:-webkit-box;
+    display:-ms-flexbox;
+    display:flex;
+    -ms-flex-wrap:wrap;
+        flex-wrap:wrap;
+    width:1240px;
+    margin:0 auto;
+    overflow:auto;
+}  
+.image {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  border: 1px solid #ebebeb;
+  margin: 6px;
+  -webkit-transition:all 0.3s ease-in-out;
+  transition:all 0.3s ease-in-out;
+}
 
-  .body {
-      overflow: scroll ;
-  }
+.body {
+    overflow: scroll ;
+}
 </style> 

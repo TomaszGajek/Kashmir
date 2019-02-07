@@ -1,18 +1,36 @@
 .review-wrapper{
     position: relative;
     padding-bottom:60px;
-}
-.review-slider{
     width:780px;
     margin:0 auto;
+}
+.rieview-wrapper-q--left{
+    position:absolute;
+    top:0;
+    left:20px;
+}
+.rieview-wrapper-q--right{
+    position:absolute;
+    bottom: 120px;
+    right: 40px;
+}
+.review-slider{
+    
     position:relative;
 
     &__content{
-
+        
         text-align:center;
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
-        flex-direction: column;
-        align-items: center;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
         
         p{
             font-size:16px;
@@ -35,12 +53,19 @@
     &__nav {
         position:absolute;
         left:50%;
-        transform:translateX(-50%);
+        -webkit-transform:translateX(-50%);
+                transform:translateX(-50%);
         bottom:0px;
         width:100%;
+        display:-webkit-box;
+        display:-ms-flexbox;
         display:flex;
-        justify-content: center;
-        align-items:center;
+        -webkit-box-pack: center;
+            -ms-flex-pack: center;
+                justify-content: center;
+        -webkit-box-align:center;
+            -ms-flex-align:center;
+                align-items:center;
 
         .swiper-pagination{
             position:relative;

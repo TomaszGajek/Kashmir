@@ -3,9 +3,15 @@
         text-align:center;
     }
     .gallery-buttons{
+        display:-webkit-box;
+        display:-ms-flexbox;
         display:flex;
-        justify-content: center;
-        align-items:center;
+        -webkit-box-pack: center;
+            -ms-flex-pack: center;
+                justify-content: center;
+        -webkit-box-align:center;
+            -ms-flex-align:center;
+                align-items:center;
     }
     
     .link-button.is-active{
@@ -13,6 +19,7 @@
     }
     
     .fade-enter-active, .fade-leave-active {
+        -webkit-transition: opacity .5s;
         transition: opacity .5s;
        
     }
@@ -40,6 +47,7 @@
             position:absolute;
             background:black;
             display:block;
+            -webkit-transition:all 0.6s ease-in-out;
             transition:all 0.6s ease-in-out;
         }
         span:nth-child(1){                        
