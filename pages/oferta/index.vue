@@ -39,13 +39,9 @@ export default {
         ])
         return {
             page: page.data[0],
-            offer: offer.data
-        }
-    },
-    data(){
-        return {
-            page:{},
-            offer: []
+            offer: offer.data.filter((single)=>{
+                return single.parent === 0
+            })
         }
     },
     mounted(){

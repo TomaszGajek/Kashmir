@@ -22,8 +22,7 @@ export default {
     mounted(){
         axios.get(`${Config.root}/wp-json/acf/v3/options/options`)
             .then((response)=>{                
-                this.logo= response.data;
-                console.log(this.logo);               
+                this.logo= response.data;             
             })
     },
     data(){

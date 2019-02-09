@@ -11,6 +11,15 @@
                     <nuxt-link :to="`/${page.slug}`" class="">{{this.page.title.rendered}}</nuxt-link>
                 </div>
             </div>
+            <div class="offer-single-wrapper">
+                <nuxt-link class="offer-single-child" 
+                    :to="`/oferta/${page.slug}/${item.slug}`"
+                    v-for="(item,index) in this.offer"
+                    :key="index">
+                    {{item.title.rendered}}
+                
+                </nuxt-link>
+            </div>
             <div class="container container--narrow" v-if="page.acf.background">
                 <div class="offer-bg" v-lazy:background-image="page.acf.background"></div>
             </div>
@@ -25,7 +34,7 @@ import axios from 'axios';
 import Config from '@/config.js';
 
 export default {
-
+     
     head () {
         return {
             title: this.page._yoast_wpseo_title,
@@ -34,22 +43,20 @@ export default {
             ]
         }
     },
-    asyncData ({ params }) {
-        return axios.get(`${Config.root}/wp-json/wp/v2/oferta/?slug=${params.slug}`)
-            .then(response => {
-                return { page: response.data[0] } 
-            })
-            .catch((error) => {
-                return { error: error }
-            })
-    },
-    data() {
+    async asyncData({ params }) {
+        let [page, offer] = await Promise.all([
+            axios.get(`${Config.root}/wp-json/wp/v2/oferta/?slug=${params.slug}`),
+            axios.get(`${Config.root}/wp-json/wp/v2/oferta/?per_page=100`)
+        ])
         return {
-        page: {},
-        error: []
+            page: page.data[0],
+            parent:page.data[0].id,
+            offer: offer.data.filter((single)=>{
+                return single.parent == page.data[0].id
+            })
+            
         }
     }
-
 }
 </script>
 <style lang="scss">

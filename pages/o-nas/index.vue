@@ -74,13 +74,13 @@ export default {
             main: main.data[0]            
         }
     },
-    data(){
-        return {
-            page:{},
-            team:[],
-            main:{}
-        }
-    },
+    // data(){
+    //     return {
+    //         page:{},
+    //         team:[],
+    //         main:{}
+    //     }
+    // },
     mounted(){
         console.log(this.main);
     }

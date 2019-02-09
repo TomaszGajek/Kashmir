@@ -65,16 +65,19 @@ export default {
         ])
         return {
             page: page.data[0],
-            offer: offer.data
+            offer: offer.data.filter((single)=>{
+                return single.parent === 0
+            })
+            
         }
     },
-    data(){
-        return {
-            page:{},
-            offer: [],
-            footer:{}
-        }
-    },
+    // data(){
+    //     return {
+    //         page:{},
+    //         offer: [],
+    //         footer:{}
+    //     }
+    // },
     mounted(){
    
     },

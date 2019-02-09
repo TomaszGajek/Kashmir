@@ -27,6 +27,7 @@ import Config from '@/config.js';
 
 export default {
     head () {
+        
         return {
             title: this.page._yoast_wpseo_title,
             meta: [
@@ -35,24 +36,24 @@ export default {
         }
     },
     
-    asyncData ({ params }) {
+    asyncData ({params}) {
         return axios.get(`${Config.root}/wp-json/wp/v2/zespol/?slug=${params.slug}`)
         .then(response => {
-            console.log(response.data);
+           
             return { page: response.data[0] }
         })
         .catch((error) => {
             return { error: error }
         })
     },
-    data() {
-        return {
-        page: {}
-        }
-    },
-    mounted(){
+    // data() {
+    //     return {
+    //     page: {}
+    //     }
+    // },
+    // mounted(){
        
-        console.log(this.page);     
-    },
+    //     console.log(this.page);     
+    // },
 }
 </script>
