@@ -2,11 +2,12 @@
 
 @import url('https://fonts.googleapis.com/css?family=Raleway:400,400i,600,700&subset=latin-ext');
   // font-family: 'Raleway', sans-serif;
-  @import url('https://fonts.googleapis.com/css?family=Marcellus+SC&subset=latin-ext');
+@import url('https://fonts.googleapis.com/css?family=Marcellus+SC&subset=latin-ext');
   // font-family: 'Marcellus SC', serif;
 
 
   .page-enter-active, .page-leave-active {
+    -webkit-transition: opacity .5s;
     transition: opacity .5s;
   }
   .page-enter, .page-leave-to {
@@ -19,16 +20,27 @@
 
   html {
   -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 
 *, *:before, *:after {
   -webkit-box-sizing: inherit;
-  -moz-box-sizing: inherit;
   box-sizing: inherit;
 }
 
+table {
+  width:100% !important;
+}
+table td {
+  padding:15px 10px;
+}
+table tr:nth-child(even) {
+  background:rgb(243, 244, 246);
+}
+img {
+  max-width:100%;
+  height:auto;
+}
 #edit-slug-box {
   display:none !important;
 }
@@ -42,6 +54,12 @@ main {
 }
 .container--narrow{
   width:1180px;
+}
+
+.container--split {
+  display:-webkit-box;
+  display:-ms-flexbox;
+  display:flex;
 }
 
 h4.text {
@@ -63,6 +81,18 @@ h2{
   font-size:30px;
   font-family: "Marcellus SC", serif;
 }
+h3{
+  color:black;
+  font-weight:400;
+  font-size:28px;
+  font-family: "Marcellus SC", serif;
+}
+h4 {
+  color:black;
+  font-weight:400;
+  font-size:24px;
+  font-family: "Marcellus SC", serif;
+}
 
 .content h2 {
   margin:40px 0;
@@ -73,15 +103,21 @@ p{
   font-weight:400;
   color:#959595;
   line-height:2;
+  text-align: justify;
 }
 
 a {
+  -webkit-transition:all 0.3s ease-in-out;
   transition:all 0.3s ease-in-out;
   text-decoration:none;
   color:#628600;
   &:hover{
-    color:darkred;
+    color:#c11c25;
   }
+}
+
+b, strong {
+  font-weight: 600;
 }
 
 ul,ol {
@@ -110,4 +146,29 @@ iframe {
   margin: 0 auto;
   height:600px;
   display:block;
+}
+
+.bread-crumbs {
+  font-size:12px;
+  font-weight:700;
+  
+  a,span {
+      color:#acacac;
+      text-decoration:none;
+      text-transform:uppercase;
+      -webkit-transition:all 0.3s ease-in-out;
+      transition:all 0.3s ease-in-out;
+  }
+  a:hover{
+      color:#555555;
+  }
+
+  a.nuxt-link-exact-active{
+      color:#555555;
+  }
+
+  a:last-child{color:#555555;}    
+
+  span.bread-crumbs__destiny {color:#555555;}
+
 }

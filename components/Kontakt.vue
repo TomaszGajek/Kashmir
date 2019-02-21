@@ -2,13 +2,13 @@
     <div class="contact-form">        
         <form>
             <div class="field">
-                <input type="text" class="input" placeholder="Name" v-model="form.full_name">
+                <input type="text" class="input" placeholder="Twoje Imię" v-model="form.full_name">
             </div>
             <div class="field">
-                <input type="email" class="input" placeholder="Email" v-model="form.email">
+                <input type="email" class="input" placeholder="Twój Email" v-model="form.email">
             </div>
             <div class="field">
-                <textarea  class="textarea" cols="30" rows="10" placeholder="Your message" v-model="form.body"></textarea>            
+                <textarea  class="textarea" cols="30" rows="10" placeholder="Twoja wiadomość" v-model="form.body"></textarea>            
             </div>
             <div class="field field-button">
                 <button v-on:click.prevent="submitForm">WYŚLIJ</button>

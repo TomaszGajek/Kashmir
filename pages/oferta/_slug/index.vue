@@ -8,22 +8,41 @@
                     <span>/</span>
                     <nuxt-link to="/oferta">Oferta</nuxt-link>
                     <span>/</span>
-                    <nuxt-link :to="`/${page.slug}`" class="">{{this.page.title.rendered}}</nuxt-link>
+                    <span class="bread-crumbs__destiny">{{this.page.title.rendered}}</span>
                 </div>
             </div>
-            <div class="offer-single-wrapper">
-                <nuxt-link class="offer-single-child" 
-                    :to="`/oferta/${page.slug}/${item.slug}`"
-                    v-for="(item,index) in this.offer"
-                    :key="index">
-                    {{item.title.rendered}}
-                
-                </nuxt-link>
-            </div>
-            <div class="container container--narrow" v-if="page.acf.background">
-                <div class="offer-bg" v-lazy:background-image="page.acf.background"></div>
-            </div>
-            <div class="container content container--narrow" v-html="page.content.rendered"></div> 
+            <div class="container content container--narrow" v-if="this.offer.length > 0"> 
+                <img class="symbol-bottom" src="~/assets/images/flower.png"/>               
+                <div class="offer-single__wrapper">
+                    <nuxt-link class="offer-single__thumbnail" 
+                        :to="`/oferta/${page.slug}/${item.slug}`"
+                        v-for="(item,index) in this.offer"
+                        :key="index">  
+                        <div class="offer-single__overlay">
+                            <div class="offer-single__image" v-lazy:background-image="item.featured_image.url[0]"></div>                            
+                            <div class="offer-single__read-more">
+                                <h2>czytaj więcej</h2>
+                            </div>                                             
+                        </div>
+                        <div class="offer-single__title-wrapper">
+                            <h2 class="offer-single__title">{{item.title.rendered}}</h2>
+                        </div>          
+                    </nuxt-link>
+                </div>
+                <img class="symbol-bottom" src="~/assets/images/symbol.png"/>
+            </div> 
+            <div class="container content container--narrow" v-else>
+                <img class="symbol-bottom" src="~/assets/images/flower.png"/>
+                <!-- <img class="offer-single__baner" v-lazy="page.featured_image.url[0]" /> -->
+                <article v-html="this.page.content.rendered">
+                    
+                </article>
+                <div class="offer-single__gallery-wrapper" v-if="page.acf.gallery">
+                    <Gallery :page="page.acf.gallery" />
+                </div>
+                <img class="symbol-bottom" src="~/assets/images/symbol.png"/>
+            </div>  
+
         </section>
     </div>
 </template>
@@ -32,9 +51,13 @@
 
 import axios from 'axios';
 import Config from '@/config.js';
+import Gallery from '@/components/Gallery';
+
 
 export default {
-     
+    components:{
+        Gallery
+    },
     head () {
         return {
             title: this.page._yoast_wpseo_title,
@@ -56,6 +79,9 @@ export default {
             })
             
         }
+    },
+    mounted(){
+        console.log(this.page);
     }
 }
 </script>

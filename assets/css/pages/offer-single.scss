@@ -1,13 +1,166 @@
-.offer-single{
-    .bread-crumbs a:last-child{
-        color:#555555;
-    }
+@mixin css-lock($min-size:20,$max-size:40,$min-width:320,$max-width:1600,$property:font-size,$unit:px){    
+    #{$property}: calc( #{$min-size}#{$unit} + (#{$max-size} - #{$min-size}) * ((100vw - #{$min-width}#{$unit}) / (#{$max-width} - #{$min-width})));
 }
 
-.offer-bg {
-    background-size: cover;
-    height: 450px;
-    background-repeat: no-repeat;
-    background-position: center center;
-    margin-top:40px;
+.offer-single{
+    $self:&;
+
+
+    &__wrapper{display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;}
+
+    &__thumbnail{
+        height:auto;
+        width:48%;
+        margin:1%;
+        display:block;
+        position:relative;
+        overflow:hidden;
+    }
+    &__thumbnail:hover{
+        #{$self}__image{
+            -webkit-transform: scale(1.04);
+                    transform: scale(1.04);
+        }
+        .link-button__text{
+            background:black;
+        }
+        .link-button {
+            border:1px solid black;
+        }
+        #{$self}__read-more{
+            opacity:1;
+        }
+        #{$self}__title{
+            background:black;
+        }
+        #{$self}__title-wrapper{
+            border:1px solid black;
+        }
+        #{$self}__overlay {
+            border:1px solid black;
+        }
+
+    }
+
+    &__image{
+        background-repeat:no-repeat;
+        background-size:cover;
+        background-position:center;
+        width:100%;
+        height:100%;
+        -webkit-transition: -webkit-transform 1s ease-in-out;
+        transition: -webkit-transform 1s ease-in-out;
+        transition: transform 1s ease-in-out;
+        transition: transform 1s ease-in-out, -webkit-transform 1s ease-in-out;
+    }
+
+    &__title-wrapper{
+        margin-top:10px;
+        padding:10px;
+        border:1px solid #acacac;
+        position:relative;
+        -webkit-transition:all 0.5s ease-in-out;
+        transition:all 0.5s ease-in-out;
+    }
+    &__title{
+        padding:16px 10px;
+        margin:0px !important;
+        text-align:center;
+        font-size:18px;     
+        @include css-lock(16,18);
+        background:#acacac;
+        text-transform:uppercase;
+        color:white;
+        -webkit-transition:all 0.5s ease-in-out;
+        transition:all 0.5s ease-in-out;
+    }
+    &__read-more{
+        position:absolute;
+        background:rgba(255, 255, 255, 0.5);
+        display:-webkit-box;
+        display:-ms-flexbox;
+        display:flex;
+        -webkit-box-pack: center;
+            -ms-flex-pack: center;
+                justify-content: center;
+        -webkit-box-align:center;
+            -ms-flex-align:center;
+                align-items:center;
+        top:0;
+        left:0;
+        right:0;
+        bottom:0;
+        opacity:0;
+        -webkit-transition:all 0.5s ease-in-out;
+        transition:all 0.5s ease-in-out;
+        h2 {
+            background:white;
+            padding:15px 30px;
+            border:1px solid black;
+            font-size:20px;
+            @include css-lock(16,20);
+        }
+    }
+    &__overlay{
+        height:450px;
+        position:relative;
+        overflow:hidden;
+        border:1px solid #acacac;
+        -webkit-transition:all 0.5s ease-in-out;
+        transition:all 0.5s ease-in-out;
+    }
+    &__symbol{
+        max-width:30px;
+    }
+    &__line{
+        position:absolute;
+        top:10px;
+        left:10px;
+        bottom:10px;
+        right:10px;
+        border:1px solid black;
+    }
+    &__content-wrapper{
+        width:70%;
+        padding:0 40px 40px 40px;
+    }
+    &__baner{
+        // height:400px;
+        // width:100%;
+        // background-position:center;
+        // background-size:cover;
+        // background-repeat:no-repeat;
+        margin: 0 auto;
+        display:block;
+    }
+    &__content{
+       
+    }
+    &__gallery-wrapper{
+        margin-top:30px;
+        border-top:1px solid #e2e5e8;
+        padding:30px 0;
+
+        .image{
+            cursor:pointer;
+        }
+    }
+    &__flower{
+        display:block;
+        margin:20px auto;
+        max-width:30px;
+    }
+    .link-button--offer-single{
+        position:absolute;
+        bottom:40px;
+        z-index:2;
+        left:50%;
+        -webkit-transform:translateX(-50%);
+                transform:translateX(-50%);  
+    
+    }
+
 }
+
+.offer-bg {background-size: cover;height: 450px;background-repeat: no-repeat;background-position: center center;margin-top:40px;}
+

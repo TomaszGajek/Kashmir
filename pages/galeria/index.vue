@@ -20,22 +20,24 @@
                 <span class="link-button__text">Dyplomy</span>
             </div>
         </div>
-        <transition name="fade"> 
-            <Gallery :page="page.acf.gallery_office" v-if="activetab === 1" />
-        </transition>
+        <div class="container">
+            <transition name="fade"> 
+                <Gallery :page="page.acf.gallery_office" v-if="activetab === 1" />
+            </transition>
 
-        <transition name="fade"> 
-            <Gallery :page="page.acf.gallery_events" v-if="activetab === 2" />
-        </transition> 
+            <transition name="fade"> 
+                <Gallery :page="page.acf.gallery_events" v-if="activetab === 2" />
+            </transition> 
 
-        <transition name="fade">     
-            <Gallery :page="page.acf.gallery_work" v-if="activetab === 3" />
-        </transition>    
+            <transition name="fade">     
+                <Gallery :page="page.acf.gallery_work" v-if="activetab === 3" />
+            </transition>    
 
-        <transition name="fade"> 
-            <Gallery :page="page.acf.gallery_diploma" v-if="activetab === 4" />
-        </transition>
-        <img class="symbol-bottom" src="~/assets/images/symbol.png"/>
+            <transition name="fade"> 
+                <Gallery :page="page.acf.gallery_diploma" v-if="activetab === 4" />
+            </transition>
+            <img class="symbol-bottom" src="~/assets/images/symbol.png"/>
+        </div>
     </section>
 </template>
 <script>

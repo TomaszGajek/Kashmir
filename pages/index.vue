@@ -58,7 +58,8 @@ export default {
             ]
         }
     },
-    async asyncData({ query, error }) {
+    async asyncData({ params }) {
+        console.log(params)
         let [page, offer] = await Promise.all([
             axios.get(`${Config.root}/wp-json/wp/v2/pages/?slug=strona-glowna`),
             axios.get(`${Config.root}/wp-json/wp/v2/oferta/?per_page=100`)
@@ -71,15 +72,12 @@ export default {
             
         }
     },
-    // data(){
-    //     return {
-    //         page:{},
-    //         offer: [],
-    //         footer:{}
-    //     }
-    // },
+    validate({ params, query, store }) {
+        return true 
+        return false // will stop Nuxt.js to render the route and display the error page
+    },
     mounted(){
-   
+        
     },
     computed:{
         rowCount(){

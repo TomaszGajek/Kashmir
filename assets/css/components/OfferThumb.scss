@@ -8,8 +8,8 @@
     margin:1px;
 
     &:hover .thumb__image{
-        -webkit-transform: scale(1.1);
-                transform: scale(1.1);
+        -webkit-transform: scale(1.04);
+                transform: scale(1.04);
     }
 
     &__image{
@@ -21,8 +21,10 @@
         position:absolute;
         top:0;
         left:0;
-        -webkit-transition:all 0.3s ease-in-out;
-        transition:all 0.3s ease-in-out;        
+        -webkit-transition: -webkit-transform 1s ease-in-out;
+        transition: -webkit-transform 1s ease-in-out;
+        transition: transform 1s ease-in-out;
+        transition: transform 1s ease-in-out, -webkit-transform 1s ease-in-out;   
     }
     &__content{
         position:absolute;
