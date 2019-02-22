@@ -1,9 +1,9 @@
 @import './normalizer.scss';
 
 @import url('https://fonts.googleapis.com/css?family=Raleway:400,400i,600,700&subset=latin-ext');
-  // font-family: 'Raleway', sans-serif;
+  /* font-family: 'Raleway', sans-serif; */
 @import url('https://fonts.googleapis.com/css?family=Marcellus+SC&subset=latin-ext');
-  // font-family: 'Marcellus SC', serif;
+  /* font-family: 'Marcellus SC', serif; */
 
 
   .page-enter-active, .page-leave-active {
@@ -60,6 +60,7 @@ main {
   display:-webkit-box;
   display:-ms-flexbox;
   display:flex;
+  padding:40px 0;
 }
 
 h4.text {
@@ -101,7 +102,8 @@ h4 {
 p{
   font-size:14px;
   font-weight:400;
-  color:#959595;
+  /* color:#959595; */
+  color:black;
   line-height:2;
   text-align: justify;
 }
@@ -111,9 +113,10 @@ a {
   transition:all 0.3s ease-in-out;
   text-decoration:none;
   color:#628600;
-  &:hover{
-    color:#c11c25;
-  }
+}
+
+a:hover{
+  color:#c11c25;
 }
 
 b, strong {
@@ -127,7 +130,8 @@ ul li,
 ol li{
   font-size:14px;
   font-weight:400;
-  color:#959595;
+  /* color:#959595; */
+  color:black;
   line-height:2;
 }
 .symbol-bottom{
@@ -142,33 +146,42 @@ ol li{
 
 iframe {
   width:100%;
-  // max-width:800px;
   margin: 0 auto;
   height:600px;
   display:block;
 }
 
+.page-baner{
+  background:#f3f4f6;
+  padding:30px;
+  text-align: center;
+
+}
 .bread-crumbs {
   font-size:12px;
   font-weight:700;
-  
-  a,span {
-      color:#acacac;
-      text-decoration:none;
-      text-transform:uppercase;
-      -webkit-transition:all 0.3s ease-in-out;
-      transition:all 0.3s ease-in-out;
-  }
-  a:hover{
-      color:#555555;
-  }
+  text-align:center;
+} 
+.bread-crumbs h1 {
+  text-align:center;
+} 
 
-  a.nuxt-link-exact-active{
-      color:#555555;
-  }
+.bread-crumbs a,span {
+color:#acacac;
+text-decoration:none;
+text-transform:uppercase;
+-webkit-transition:all 0.3s ease-in-out;
+transition:all 0.3s ease-in-out;
+} 
 
-  a:last-child{color:#555555;}    
-
-  span.bread-crumbs__destiny {color:#555555;}
-
+.bread-crumbs a:hover{
+  color:#555555;
 }
+
+.bread-crumbs a.nuxt-link-exact-active{
+  color:#555555;
+}
+
+.bread-crumbs a:last-child{color:#555555;}    
+
+.bread-crumbs span.bread-crumbs__destiny {color:#555555;}

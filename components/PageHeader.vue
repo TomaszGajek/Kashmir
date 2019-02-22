@@ -21,6 +21,4 @@ export default {
     }
 }
 </script>
-<style lang="scss">
-    @import '@/assets/css/components/PageHeader.scss';
-</style>
+

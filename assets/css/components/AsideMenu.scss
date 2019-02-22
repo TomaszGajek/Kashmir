@@ -3,11 +3,11 @@
     $self:&;
     padding:0 0 20px 30px;
     border-left:1px solid rgb(226, 229, 232);
-    text-align:center;
+    text-align:left;
     width:30%;
     h4 {
-        margin-bottom:10px;
-        margin-top:40px;
+        margin-bottom:40px;
+        margin-top:0px;
     }
     &__link{
         display:block;
@@ -16,34 +16,9 @@
         margin-bottom:20px;
         position:relative;
 
-        &:after {
-            content:"";
-            display:block;
-            width:0;
-            height:1px;
-            background:#c11c25;
-            position:absolute;
-            bottom:-10px;
-            left:50%;
-            -webkit-transform:translateX(-50%);
-                    transform:translateX(-50%);
-            -webkit-transition:all 0.3s ease-in-out;
-            transition:all 0.3s ease-in-out;            
-        }
-
-        &:hover:after{
-            width:100px;
-        }
     }
     &__link.nuxt-link-active{
         color:#c11c25;
     }
-    &__link.nuxt-link-active:after{
-        width:100px;
-    }
-    &__symbol{
-        margin:20px auto;
-        display:block;
-        max-width:50px;
-    }
+
 }

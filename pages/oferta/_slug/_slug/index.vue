@@ -1,7 +1,7 @@
 <template>
     <div>   
         <div class="page-baner">
-            <h1>{{this.page.title.rendered}}</h1>
+            <h1 v-html="this.page.title.rendered"></h1>
             <div class="bread-crumbs">
                 <nuxt-link to="/">Start</nuxt-link>
                 <span>/</span>
@@ -9,19 +9,18 @@
                 <span>/</span>
                 <nuxt-link :to="`/oferta/${parent[0].slug}`" class="">{{this.parent[0].title.rendered}}</nuxt-link>
                 <span>/</span>
-                <span class="bread-crumbs__destiny">{{this.page.title.rendered}}</span>
+                <span class="bread-crumbs__destiny" v-html="this.page.title.rendered"></span>
             </div>
         </div>
         <div class="container content container--narrow container--split">
             <div class="offer-single__content-wrapper">
-                <img class="symbol-bottom" src="~/assets/images/flower.png"/> 
                 <img class="offer-single__baner" v-lazy="page.featured_image.url[0]" />
                 <article class="offer-single__content" v-html="page.content.rendered">                    
                 </article>
                 <div class="offer-single__gallery-wrapper" v-if="page.acf.gallery">
+                    <h4>Galeria</h4>
                     <Gallery :page="page.acf.gallery" />
                 </div>
-                <img class="symbol-bottom" src="~/assets/images/symbol.png"/>
             </div>
             <AsideMenu :links="offer" :parent="parent"/>
         </div>

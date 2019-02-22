@@ -122,7 +122,7 @@
     }
     &__content-wrapper{
         width:70%;
-        padding:0 40px 40px 40px;
+        padding:0px 40px;
     }
     &__baner{
         // height:400px;
@@ -137,9 +137,9 @@
        
     }
     &__gallery-wrapper{
-        margin-top:30px;
-        border-top:1px solid #e2e5e8;
-        padding:30px 0;
+        // margin-top:30px;
+        // border-top:1px solid #e2e5e8;
+        // padding:30px 0;
 
         .image{
             cursor:pointer;
@@ -163,4 +163,5 @@
 }
 
 .offer-bg {background-size: cover;height: 450px;background-repeat: no-repeat;background-position: center center;margin-top:40px;}
+
 

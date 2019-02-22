@@ -1,13 +1,12 @@
 <template>
     <aside class="aside">
-        <h4>{{parent[0].title.rendered}}</h4>
-        <img class="aside__symbol" src="~/assets/images/symbol.png"/>
+        <h4 v-if="parent[0].title.rendered">{{parent[0].title.rendered}}</h4>
         <nuxt-link 
             class="aside__link"
             :to="`/oferta/${parent[0].slug}/${item.slug}`"
             v-for="(item,index) in this.links"
-            :key="index">
-                {{item.title.rendered}}                      
+            :key="index" v-html="item.title.rendered">
+                                  
         </nuxt-link>
     </aside>
 </template>
@@ -17,6 +16,10 @@ export default {
     props:{
         links:{},
         parent:{}
+    },
+    mounted(){
+        console.log(this.parent);
+        console.log(this.links);
     }
 }
 </script>

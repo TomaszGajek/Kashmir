@@ -2,13 +2,13 @@
     <div>
         <section class="offer-single">
             <div class="page-baner">
-                <h1>{{this.page.title.rendered}}</h1>
+                <h1 v-html="this.page.title.rendered"></h1>
                 <div class="bread-crumbs">
                     <nuxt-link to="/">Start</nuxt-link>
                     <span>/</span>
                     <nuxt-link to="/oferta">Oferta</nuxt-link>
                     <span>/</span>
-                    <span class="bread-crumbs__destiny">{{this.page.title.rendered}}</span>
+                    <span class="bread-crumbs__destiny" v-html="this.page.title.rendered"></span>
                 </div>
             </div>
             <div class="container content container--narrow" v-if="this.offer.length > 0"> 
@@ -25,22 +25,33 @@
                             </div>                                             
                         </div>
                         <div class="offer-single__title-wrapper">
-                            <h2 class="offer-single__title">{{item.title.rendered}}</h2>
+                            <h2 class="offer-single__title" v-html="item.title.rendered"></h2>
                         </div>          
                     </nuxt-link>
                 </div>
                 <img class="symbol-bottom" src="~/assets/images/symbol.png"/>
             </div> 
-            <div class="container content container--narrow" v-else>
-                <img class="symbol-bottom" src="~/assets/images/flower.png"/>
-                <!-- <img class="offer-single__baner" v-lazy="page.featured_image.url[0]" /> -->
-                <article v-html="this.page.content.rendered">
-                    
-                </article>
-                <div class="offer-single__gallery-wrapper" v-if="page.acf.gallery">
-                    <Gallery :page="page.acf.gallery" />
+            <div class="container content container--narrow container--split" v-else>
+                <div class="offer-single__content-wrapper">
+                    <!-- <img class="symbol-bottom" src="~/assets/images/flower.png"/> -->
+                    <article v-html="this.page.content.rendered">
+                        
+                    </article>
+                    <div class="offer-single__gallery-wrapper" v-if="page.acf.gallery">
+                        <h4>Galeria</h4>
+                        <Gallery :page="page.acf.gallery" />
+                    </div>
+                    <img class="symbol-bottom" src="~/assets/images/symbol.png"/>
                 </div>
-                <img class="symbol-bottom" src="~/assets/images/symbol.png"/>
+                <aside class="aside">
+                    <h4>Oferta</h4>
+                    <nuxt-link 
+                        class="aside__link"
+                        :to="`/oferta/${item.slug}`"
+                        v-for="(item,index) in this.all"
+                        :key="index" v-html="item.title.rendered">                                            
+                    </nuxt-link>
+                </aside>
             </div>  
 
         </section>
@@ -52,11 +63,13 @@
 import axios from 'axios';
 import Config from '@/config.js';
 import Gallery from '@/components/Gallery';
+import AsideMenu from '@/components/AsideMenu';
 
 
 export default {
     components:{
-        Gallery
+        Gallery,
+        AsideMenu
     },
     head () {
         return {
@@ -74,6 +87,9 @@ export default {
         return {
             page: page.data[0],
             parent:page.data[0].id,
+            all:offer.data.filter((single)=>{
+                return single.parent === 0
+            }),
             offer: offer.data.filter((single)=>{
                 return single.parent == page.data[0].id
             })
@@ -81,7 +97,7 @@ export default {
         }
     },
     mounted(){
-        console.log(this.page);
+
     }
 }
 </script>
