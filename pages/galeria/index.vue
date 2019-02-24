@@ -1,42 +1,26 @@
 <template>
     <section class="gallery">
-        <PageHeader :page="page" />
         <div class="container about__container">
             <img src="~/assets/images/flower.png" />
-            <h2>{{this.page.acf.gallery_slogan}}</h2>
+            <h4 class="text">{{this.page.acf.text}}</h4>
+            <h2>{{this.page.acf.slogan}}</h2>
             <img src="~/assets/images/symbol.png"/>
         </div>
-        <div class="gallery-buttons">
-            <div class="link-button" @click="activetab=1" :class="[ activetab === 1 ? 'active' : '' ]"> 
-                <span class="link-button__text">Biuro</span>
-            </div>
-            <div class="link-button" @click="activetab=2" :class="[ activetab === 2 ? 'active' : '' ]"> 
-                <span class="link-button__text">Eventy</span>
-            </div>
-            <div class="link-button" @click="activetab=3" :class="[ activetab === 3 ? 'active' : '' ]"> 
-                <span class="link-button__text">Praca</span>
-            </div>
-            <div class="link-button" @click="activetab=4" :class="[ activetab === 4 ? 'active' : '' ]"> 
-                <span class="link-button__text">Dyplomy</span>
-            </div>
-        </div>
-        <div class="container">
-            <transition name="fade"> 
-                <Gallery :page="page.acf.gallery_office" v-if="activetab === 1" />
-            </transition>
+        <div class="gallery__wrapper">
+            <nuxt-link class="gallery__item" 
+            v-for="item in gallery" 
+            :key="item.id"
+            v-lazy:background-image="item.featured_image.url[0]"
+            :to="`/galeria/${item.slug}`"
+            >
+                <div class="gallery__overlay">
+                    <div class="gallery__line">
+                        <h2>{{item.title.rendered}}</h2>
+                        <img src="~/assets/images/symbol.png"/>
+                    </div>
 
-            <transition name="fade"> 
-                <Gallery :page="page.acf.gallery_events" v-if="activetab === 2" />
-            </transition> 
-
-            <transition name="fade">     
-                <Gallery :page="page.acf.gallery_work" v-if="activetab === 3" />
-            </transition>    
-
-            <transition name="fade"> 
-                <Gallery :page="page.acf.gallery_diploma" v-if="activetab === 4" />
-            </transition>
-            <img class="symbol-bottom" src="~/assets/images/symbol.png"/>
+                </div>
+            </nuxt-link>
         </div>
     </section>
 </template>
@@ -52,7 +36,7 @@ export default {
         PageHeader
     },
 
-    head () {
+    head() {
         return {
             title: this.page._yoast_wpseo_title,
             meta: [
@@ -60,24 +44,20 @@ export default {
             ]
         }
     },
-    asyncData ({ params }) {
-        return axios.get(`${Config.root}/wp-json/wp/v2/pages/?slug="galeria"`)
-        .then(response => {
-            console.log(response.data);
-            return { 
-                        page: response.data[0]                    
-                    }
-        })
-        .catch((error) => {
-            return { error: error }
-        })
-    },
-    data() {
+    async asyncData({ query, error }) {
+        let [page, gallery] = await Promise.all([
+            axios.get(`${Config.root}/wp-json/wp/v2/pages/?slug=galeria`),
+            axios.get(`${Config.root}/wp-json/wp/v2/galeria/?per_page=100`)
+        ])
         return {
-            page: {},
-            activetab:1
-            
+            page: page.data[0],
+            gallery: gallery.data,
+            images: gallery.data.map( (elem) => {return elem.featured_image.url[0]} )
+
         }
+    },
+    mounted(){
+        
     }
 }
 </script>

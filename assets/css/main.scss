@@ -16,6 +16,7 @@
 
   body {
     font-family: 'Raleway', sans-serif;
+    overflow:auto !important;
   }
 
   html {
@@ -185,3 +186,7 @@ transition:all 0.3s ease-in-out;
 .bread-crumbs a:last-child{color:#555555;}    
 
 .bread-crumbs span.bread-crumbs__destiny {color:#555555;}
+
+.blueimp-gallery{
+  overflow-x:hidden;
+}
