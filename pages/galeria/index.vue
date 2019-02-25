@@ -51,7 +51,9 @@ export default {
         ])
         return {
             page: page.data[0],
-            gallery: gallery.data,
+            gallery: gallery.data.filter((single)=>{
+                return single.parent === 0
+            }),
             images: gallery.data.map( (elem) => {return elem.featured_image.url[0]} )
 
         }

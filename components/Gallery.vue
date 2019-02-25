@@ -9,9 +9,14 @@
         <span></span>    
         <div
             class="image"
-            @click="index = imageIndex"
             :style="{ backgroundImage: 'url(' + image.sizes.large + ')' }"
-            ></div>
+            >
+        </div>
+        <div class="image-overlay" @click="index = imageIndex">
+            <div class="link-button">
+              <p class="link-button__text">Powiększ</p>
+            </div>
+        </div>
     </div>    
     </div>
   </div>
