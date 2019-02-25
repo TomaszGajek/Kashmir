@@ -128,7 +128,7 @@ header{
         position:absolute;
        
         -webkit-transition: all 0.3s ease-in-out;
-       
+        border: 1px solid #e2e5e8;
         transition: all 0.3s ease-in-out;
         opacity:0;
         visibility: hidden;
@@ -160,13 +160,15 @@ header{
         font-size:14px;
         padding:10px 20px;
         display:block;
-        &:hover{
-            color:#628600;
+        &:hover span{
+            
+            color:black;
         }
 
     }
-    &__sub-item a.nuxt-link-exact-active{
-        color:#628600;
+    &__sub-item a.nuxt-link-active span{
+       
+        color:black;
     }
     
 }

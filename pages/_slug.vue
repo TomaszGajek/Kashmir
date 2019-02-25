@@ -4,7 +4,7 @@
         <section>
             <PageHeader :page="page"/>
             <div class="container container--narrow">
-                <div class="content" v-html="page.content.rendered"></div> 
+                <div class="content content--default" v-html="page.content.rendered"></div> 
             </div>
         </section>
     </div>

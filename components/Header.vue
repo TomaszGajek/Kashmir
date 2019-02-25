@@ -1,42 +1,46 @@
 <template>
     <header>
-    <nav class="navigation" :class="[ isScrolling ? 'isScrolling' : '' ]">
-        <div class="container navigation__container">
-            <nuxt-link to="/" ><img  class="navigation__logo" src="~/assets/images/logo.png"/></nuxt-link>
-            <div class="navigation__wrapper">
-                <ul class="navigation__list">
-                    <li class="navigation__item" v-for="page in parent" :key="page.ID">
-                        <nuxt-link 
-                            class="navigation__link"
-                            :to="page.link" 
-                            :id="page.ID" 
-                            @click.native="toggleSubMenu" >
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            {{page.title}}                          
-                        </nuxt-link>
-                        <transition name="slide">
-                        <ul>                
-                            <li class="navigation__sub-item" 
-                                v-for="item in pages" 
-                                v-if="item.menu_item_parent == page.ID">
-                                <nuxt-link :to="item.link"><span>{{item.title}}</span></nuxt-link>
-                            </li>
-                        </ul>   
-                        </transition>                 
-                    </li>
-                </ul>
-               
-                <Reservation/>
-                <Socials/>
+        <nav class="navigation" :class="[ isScrolling ? 'isScrolling' : '' ]">
+            <div class="container navigation__container">
+                <nuxt-link to="/" ><img  class="navigation__logo" src="~/assets/images/logo.png"/></nuxt-link>
+                <div class="navigation__wrapper">
+                    <ul class="navigation__list">
+                        <li class="navigation__item" v-for="page in parent" :key="page.ID">
+                            <nuxt-link 
+                                class="navigation__link"
+                                :to="page.link" 
+                                :id="page.ID" 
+                                @click.native="toggleSubMenu" >
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                {{page.title}}                          
+                            </nuxt-link>
+                            <transition name="slide">
+                            <ul>                
+                                <li class="navigation__sub-item" 
+                                    v-for="item in pages" 
+                                    v-if="item.menu_item_parent == page.ID">
+                                    <nuxt-link :to="item.link"><span>{{item.title}}</span></nuxt-link>
+                                </li>
+                            </ul>   
+                            </transition>                 
+                        </li>
+                    </ul>
+                
+                    <Reservation/>
+                    <Socials/>
+                </div>
             </div>
+        </nav>
+        <div class="arrow-down" v-if="isScrolling" @click="this.returnTop">
+            <img src="~/assets/images/arrow-up.png"/>
         </div>
-    </nav>
-    <div class="arrow-down" v-if="isScrolling" @click="this.returnTop">
-        <img src="~/assets/images/arrow-up.png"/>
-    </div>
+        <nuxt-link to="/voucher" class="voucher-link">
+            <p class="voucher-text">Kup Voucher</p>
+        </nuxt-link>
+
     </header>
 </template>
 

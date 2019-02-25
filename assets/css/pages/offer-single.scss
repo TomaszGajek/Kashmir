@@ -10,7 +10,7 @@
 
     &__thumbnail{
         height:auto;
-        width:48%;
+        width:350px;
         margin:1%;
         display:block;
         position:relative;
@@ -66,8 +66,8 @@
         padding:16px 10px;
         margin:0px !important;
         text-align:center;
-        font-size:18px;     
-        @include css-lock(16,18);
+        font-size:14px;     
+        @include css-lock(12,14);
         background:#acacac;
         text-transform:uppercase;
         color:white;
@@ -102,7 +102,7 @@
         }
     }
     &__overlay{
-        height:450px;
+        height:350px;
         position:relative;
         overflow:hidden;
         border:1px solid #acacac;
@@ -125,11 +125,6 @@
         padding:0px 40px;
     }
     &__baner{
-        // height:400px;
-        // width:100%;
-        // background-position:center;
-        // background-size:cover;
-        // background-repeat:no-repeat;
         margin: 0 auto;
         display:block;
     }
@@ -137,9 +132,6 @@
        
     }
     &__gallery-wrapper{
-        // margin-top:30px;
-        // border-top:1px solid #e2e5e8;
-        // padding:30px 0;
 
         .image{
             cursor:pointer;

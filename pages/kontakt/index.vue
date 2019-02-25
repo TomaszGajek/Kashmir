@@ -13,6 +13,7 @@
             <img src="~/assets/images/symbol.png"/>
         </div>
         <Kontakt/>
+        <Map/>
     </div>
     
 </template>
@@ -22,11 +23,13 @@ import axios from 'axios';
 import Config from '@/config.js';
 import PageHeader from '@/components/PageHeader';
 import Kontakt from '@/components/Kontakt';
+import Map from '@/components/Map';
 
 export default {
     components:{
         PageHeader,
-        Kontakt
+        Kontakt,
+        Map
     },
     head () {
         return {

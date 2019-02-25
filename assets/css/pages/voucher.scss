@@ -1,0 +1,46 @@
+.voucher {
+    $self:&;
+    &__wrapper{
+        padding:20px 0;
+        text-align: center;
+    }
+    &__symbol{
+        margin-top:40px;
+        margin-left:auto;
+        margin-right:auto;
+    }
+    &__content{
+        padding:40px 0 20px 0;
+    }
+    &__img {
+        height:auto;
+        max-width:600px;
+        display:block;
+        margin:0 auto;
+    }
+    &__item-text{
+        padding:10px 15px;
+        border:1px solid black;
+        text-align:center;
+    }
+    &__children-wrapper {
+        // margin-top:40px;
+    }
+    &__children{
+        transition:all 0.3s ease-in-out;
+        display:block;
+    }
+    &__children:hover {
+        box-shadow:0px 0px 21px 0px rgba(0, 0, 0, 0.2);
+    }
+    
+}
+.container--voucher{
+    display:flex;
+    justify-content: center;
+    flex-direction:column;
+    align-items:center;
+    padding:20px 0;
+    max-width:600px;
+
+}

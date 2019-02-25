@@ -95,6 +95,9 @@ h4 {
   font-size:24px;
   font-family: "Marcellus SC", serif;
 }
+.content--default{
+  padding:40px 0;
+}
 
 .content h2 {
   margin:40px 0;
@@ -189,4 +192,41 @@ transition:all 0.3s ease-in-out;
 
 .blueimp-gallery{
   overflow-x:hidden;
+}
+
+.voucher-link {
+  position:fixed;
+  right:-38px;
+  top:300px;
+  display: block;
+  padding: 3px;
+  text-decoration: none;
+  border: 1px solid black;
+  z-index:3;
+  -webkit-transform:rotate(-90deg) translateX(50%);
+          transform:rotate(-90deg) translateX(50%);
+
+  &:hover .voucher-text{
+    background:#628600;
+  }
+  &:hover {
+    border:1px solid #628600;
+  }
+}
+.voucher-text{
+  background: black;
+  font-size: 12px;
+  color: #ffffff;
+  text-transform: uppercase;
+  padding: 10px 20px;
+  margin: 0;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+
+}
+.map-wrapper{
+  margin-top:40px;
+}
+.map-frame{
+  height:500px;
 }
