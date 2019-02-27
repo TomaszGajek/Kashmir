@@ -4,9 +4,16 @@
         <div class="container container--voucher">
                 <img src="~/assets/images/flower.png" />
                 <div class="voucher__wrapper">
-                    <img class="voucher__img" 
-                        v-if="this.page.acf.background" 
-                        v-lazy="this.page.acf.background" />  
+                    <clazy-load :src="this.page.acf.background">
+                        <transition name="fade">
+                            <img class="voucher__img"  :src="this.page.acf.background" />  
+                        </transition>
+                        <transition name="fade" slot="placeholder">
+                            <div slot="placeholder">
+                                Ładowanie....
+                            </div>
+                        </transition>
+                    </clazy-load> 
                     <div class="voucher__content" v-html="this.page.content.rendered"></div>
                     <img src="~/assets/images/flower.png" />
                     <div class="voucher__children-wrapper">

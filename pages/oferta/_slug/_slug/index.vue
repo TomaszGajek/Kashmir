@@ -14,7 +14,17 @@
         </div>
         <div class="container content container--narrow container--split">
             <div class="offer-single__content-wrapper">
-                <img class="offer-single__baner" v-lazy="page.featured_image.url[0]" />
+                <clazy-load :src="page.featured_image.url_large[0]">
+                    <transition name="fade">
+                        <img class="offer-single__baner" :src="page.featured_image.url_large[0]"/>
+                    </transition>
+                    <transition name="fade" slot="placeholder">
+                        <div slot="placeholder">
+                            Ładowanie....
+                        </div>
+                    </transition>
+                </clazy-load>
+                <!-- <img class="offer-single__baner" v-lazy="page.featured_image.url[0]" /> -->
                 <article class="offer-single__content" v-html="page.content.rendered">                    
                 </article>
                 <div class="offer-single__gallery-wrapper" v-if="page.acf.gallery">
@@ -53,10 +63,6 @@ export default {
                 return single.parent == page.data[0].parent
             })            
         }
-    },
-    mounted(){
-        console.log(this.parent);
-        console.log(this.offer);
     }
 }
 </script>

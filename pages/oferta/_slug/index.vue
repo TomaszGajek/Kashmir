@@ -12,31 +12,35 @@
                 </div>
             </div>
             <div class="container content container--narrow" v-if="this.offer.length > 0"> 
-                <img class="symbol-bottom" src="~/assets/images/flower.png"/>               
+                             
                 <div class="offer-single__wrapper">
                     <nuxt-link class="offer-single__thumbnail" 
                         :to="`/oferta/${page.slug}/${item.slug}`"
                         v-for="(item,index) in this.offer"
                         :key="index">  
                         <div class="offer-single__overlay">
-                            <div class="offer-single__image" v-lazy:background-image="item.featured_image.url[0]"></div>                            
-                            <div class="offer-single__read-more">
-                                <h2>czytaj więcej</h2>
-                            </div>                                             
+                            <clazy-load :src="item.featured_image.url_large[0]">
+                                <transition name="fade">
+                                    <div class="offer-single__image" :style="{backgroundImage:`url('${item.featured_image.url_large[0]}')`}"></div>
+                                </transition>
+                                <transition name="fade" slot="placeholder">
+                                    <div slot="placeholder">
+                                        Ładowanie....
+                                    </div>
+                                </transition>
+                            </clazy-load>
+                            <div class="offer-single__title-wrapper">
+                                <h2 class="offer-single__title" v-html="item.title.rendered"></h2>
+                            </div>
                         </div>
-                        <div class="offer-single__title-wrapper">
-                            <h2 class="offer-single__title" v-html="item.title.rendered"></h2>
-                        </div>          
+
                     </nuxt-link>
                 </div>
-                <img class="symbol-bottom" src="~/assets/images/symbol.png"/>
+                
             </div> 
             <div class="container content container--narrow container--split" v-else>
                 <div class="offer-single__content-wrapper">
-                    <!-- <img class="symbol-bottom" src="~/assets/images/flower.png"/> -->
-                    <article v-html="this.page.content.rendered">
-                        
-                    </article>
+                    <article v-html="this.page.content.rendered"></article>
                     <div class="offer-single__gallery-wrapper" v-if="page.acf.gallery">
                         <h4>Galeria</h4>
                         <Gallery :page="page.acf.gallery" />
@@ -44,12 +48,13 @@
                     <img class="symbol-bottom" src="~/assets/images/symbol.png"/>
                 </div>
                 <aside class="aside">
-                    <h4>Oferta</h4>
+                    <h4><p>Oferta</p></h4>
                     <nuxt-link 
-                        class="aside__link"
+                        class="link-button"
                         :to="`/oferta/${item.slug}`"
                         v-for="(item,index) in this.all"
-                        :key="index" v-html="item.title.rendered">                                            
+                        :key="index">   
+                        <span class="link-button__text" v-html="item.title.rendered"></span>                                         
                     </nuxt-link>
                 </aside>
             </div>  
@@ -97,7 +102,7 @@ export default {
         }
     },
     mounted(){
-
+        console.log(this.offer)
     }
 }
 </script>

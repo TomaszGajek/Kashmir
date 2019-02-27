@@ -1,6 +1,15 @@
 <template>
-    <div class="thumb" :to="item.link">
-        <div class="thumb__image" v-lazy:background-image="this.item.featured_image.url_large[0]"></div>
+    <div class="thumb">
+        <clazy-load :src="this.item.featured_image.url_large[0]">
+            <transition name="fade">
+                <div class="thumb__image" :style="{backgroundImage:`url('${this.item.featured_image.url_large[0]}')`}"></div>
+            </transition>
+            <transition name="fade" slot="placeholder">
+                <div slot="placeholder">
+                    Ładowanie...
+                </div>
+            </transition>
+        </clazy-load>
         <div class="thumb__content">
             <img src="~/assets/images/symbol-2.png"/>
             <h4 class="text">Oferta</h4>

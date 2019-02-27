@@ -1,12 +1,12 @@
 <template>
     <aside class="aside">
-        <h4 v-if="parent[0].title.rendered">{{parent[0].title.rendered}}</h4>
+        <h4 v-if="parent[0].title.rendered"><p v-html="parent[0].title.rendered"></p></h4>
         <nuxt-link 
-            class="aside__link"
+            class="link-button"
             :to="`/oferta/${parent[0].slug}/${item.slug}`"
             v-for="(item,index) in this.links"
-            :key="index" v-html="item.title.rendered">
-                                  
+            :key="index">
+              <span class="link-button__text" v-html="item.title.rendered"></span>                     
         </nuxt-link>
     </aside>
 </template>

@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <section class="contact">
         <PageHeader :page="page" />
         <div class="container about__container">
             <img src="~/assets/images/flower.png" />
@@ -7,14 +7,25 @@
         <div class="contact-info" v-html="this.page.content.rendered">
 
         </div>
+        <div class="contact__container">
+        <div class="contact__wrapper">
+                <div class="contact__column" 
+                    v-for="(item,index) in this.columns"
+                    :key="index">
+                        <img :src="item.icon" />
+                        <div class="contact__text" v-html="item.text"></div>
+                    </div>
+            </div>
+        </div>    
         <div class="container about__container">
             <img src="~/assets/images/flower.png" />
             <h2>{{this.page.acf.contact_slogan}}</h2>
             <img src="~/assets/images/symbol.png"/>
         </div>
+        
         <Kontakt/>
-        <Map/>
-    </div>
+        
+    </section>
     
 </template>
 
@@ -23,13 +34,12 @@ import axios from 'axios';
 import Config from '@/config.js';
 import PageHeader from '@/components/PageHeader';
 import Kontakt from '@/components/Kontakt';
-import Map from '@/components/Map';
+
 
 export default {
     components:{
         PageHeader,
-        Kontakt,
-        Map
+        Kontakt
     },
     head () {
         return {
@@ -45,14 +55,12 @@ export default {
             axios.get(`${Config.root}/wp-json/wp/v2/pages/?slug="kontakt"`)
         ])
         return {
-            page: page.data[0]            
+            page: page.data[0],
+            columns: page.data[0].acf.row         
         }
     },
-    data() {
-        return {
-            page: {}
-            
-        }
+    mounted(){
+        console.log(this.columns);
     }
 }
 </script>

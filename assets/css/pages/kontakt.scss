@@ -1,7 +1,35 @@
 .contact-info{
     text-align: center;
-
+    h2 {
+        margin:0;
+    }
     p {
         text-align:center;
+    }
+}
+
+.contact{
+    &__container{
+        background: #f3f4f6;
+    }
+    &__wrapper{
+        display:flex;
+        justify-content: center;
+        max-width:1200px;
+        margin:40px auto 0 auto;
+       
+    }
+    &__column{
+        text-align: center;
+        margin:10px;
+        width:30%;
+        padding:80px 50px;
+        // border:1px solid black;
+        img {
+            max-width:40px;
+        }
+        p{
+            text-align: center;
+        }
     }
 }

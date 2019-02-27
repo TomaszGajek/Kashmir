@@ -97,6 +97,9 @@ h4 {
 }
 .content--default{
   padding:40px 0;
+  padding-top:0;
+  width:960px;
+  margin:0 auto;
 }
 
 .content h2 {
@@ -196,13 +199,14 @@ transition:all 0.3s ease-in-out;
 
 .voucher-link {
   position:fixed;
-  right:-38px;
-  top:300px;
+  right:-110px;
+  top:400px;
   display: block;
   padding: 3px;
   text-decoration: none;
-  border: 1px solid black;
+  // border: 1px solid black;
   z-index:3;
+  border:1px solid #628600; 
   -webkit-transform:rotate(-90deg) translateX(50%);
           transform:rotate(-90deg) translateX(50%);
 
@@ -214,8 +218,9 @@ transition:all 0.3s ease-in-out;
   }
 }
 .voucher-text{
-  background: black;
-  font-size: 12px;
+  // background: black;
+  background:#628600;
+  font-size: 20px;
   color: #ffffff;
   text-transform: uppercase;
   padding: 10px 20px;
@@ -225,8 +230,35 @@ transition:all 0.3s ease-in-out;
 
 }
 .map-wrapper{
-  margin-top:40px;
+  margin-top:0px;
 }
 .map-frame{
   height:500px;
+}
+
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.fadeIn {
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
 }

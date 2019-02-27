@@ -12,7 +12,7 @@
                 <OfferThumb v-for="(item,index) in offer.slice((i-1)*6,i*6)" :key="index" :item="item" />
             </div>
         </section>
-        <img class="symbol-bottom" src="~/assets/images/symbol.png"/>
+
     </div>
 </template>
 

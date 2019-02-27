@@ -1,13 +1,24 @@
 .aside {
     
     $self:&;
-    padding:0 0 20px 30px;
+    padding:0 0 0px 30px;
     border-left:1px solid rgb(226, 229, 232);
     text-align:left;
     width:30%;
     h4 {
-        margin-bottom:40px;
+        margin-bottom:20px;
         margin-top:0px;
+        text-align: center;
+        text-transform: uppercase;
+        border:1px solid #acacac;
+        padding:5px;
+        p {
+            background:#acacac;
+            text-align: center;
+            color:white;
+            margin:0;
+            font-size:22px;
+        }
     }
     &__link{
         display:block;
@@ -17,8 +28,34 @@
         position:relative;
 
     }
-    &__link.nuxt-link-active{
-        color:#c11c25;
+    
+    .link-button{
+        margin-bottom:10px;
+        border:1px solid #f3f4f6;
+        &:hover {
+            border:1px solid #acacac;
+        }
+        &:hover .link-button__text{
+            background:#acacac;
+            color:white;
+        }
     }
+
+    .link-button.nuxt-link-active{
+        border:1px solid #acacac;
+        .link-button__text{
+            background:#acacac;
+            color:white;
+        }
+    }
+    .link-button__text{
+        padding:16px 5px;
+        width:100%;
+        text-align: center;
+        background:#f3f4f6;
+        color:black;
+        text-transform: none;
+    }
+
 
 }

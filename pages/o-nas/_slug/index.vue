@@ -12,10 +12,22 @@
         </div>
         <div class="container">
             <div class="member">
-                <div class="member__photo" v-lazy:background-image="this.page.featured_image.url_large[0]"></div>
+                <!-- <div class="member__photo" v-lazy:background-image="this.page.featured_image.url_large[0]"></div> -->
+                <clazy-load :src="this.page.featured_image.url_large[0]">
+                    <transition name="fade">
+                        <div class="member__photo" :style="{backgroundImage:`url('${this.page.featured_image.url_large[0]}')`}"></div>
+                    </transition>
+                    <transition name="fade" slot="placeholder">
+                        <div slot="placeholder">
+                            Ładowanie....
+                        </div>
+                    </transition>
+                </clazy-load>
+
                 <h2>{{this.page.acf.role}}</h2>
                 <img class="member__symbol" src="~/assets/images/symbol.png"/>
                 <div class="member__description" v-html="this.page.content.rendered"></div>
+                
             </div>
         </div>
     </section>
@@ -26,6 +38,7 @@ import axios from 'axios';
 import Config from '@/config.js';
 
 export default {
+    // transition: '',
     head () {
         
         return {
@@ -46,14 +59,33 @@ export default {
             return { error: error }
         })
     },
-    // data() {
-    //     return {
-    //     page: {}
-    //     }
-    // },
-    // mounted(){
-       
-    //     console.log(this.page);     
-    // },
 }
 </script>
+
+<style scoped>
+    
+    @keyframes acrossIn {
+      0% {
+        transform: translate3d(-10%, 0, 0);
+      }
+      100% {
+        transform: translate3d(0, 0, 0);
+      }
+    }
+    @keyframes acrossOut {
+      0% {
+        transform: translate3d(0, 0, 0);
+      }
+      100% {
+        transform: translate3d(10%, 0, 0);
+      }
+    }
+
+    .page-enter-active {
+      animation: acrossIn .40s ease-out both;
+    } 
+    .page-leave-active {
+      animation: acrossOut .60s ease-in both;
+    } 
+</style>
+

@@ -38,7 +38,7 @@
             <img src="~/assets/images/arrow-up.png"/>
         </div>
         <nuxt-link to="/voucher" class="voucher-link">
-            <p class="voucher-text">Kup Voucher</p>
+            <p class="voucher-text">Voucher Upominkowy</p>
         </nuxt-link>
 
     </header>

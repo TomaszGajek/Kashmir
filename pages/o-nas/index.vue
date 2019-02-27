@@ -10,8 +10,8 @@
                 <p>{{this.page.acf.description}}</p>
                 <LinkButton :link="page.acf.link"/>
             </div>
-            <div class="container">
-                <div class="about-bg" v-lazy:background-image="page.acf.background"></div>
+            <div class="about-bg">
+                <iframe class="embed-responsive-item" :src="page.acf.movie" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
             </div>
             <div class="container about__container">
                 <img src="~/assets/images/flower.png" />
@@ -73,16 +73,6 @@ export default {
             team: team.data,
             main: main.data[0]            
         }
-    },
-    // data(){
-    //     return {
-    //         page:{},
-    //         team:[],
-    //         main:{}
-    //     }
-    // },
-    mounted(){
-        console.log(this.main);
     }
 }
 </script>

@@ -18,7 +18,17 @@
                 </div>
             </div>
         </div>
-        <img class="symbol-bottom" src="~/assets/images/symbol.png"/>
+        <!-- <img class="symbol-bottom" src="~/assets/images/symbol.png"/> -->
+        <div class="media__galleries">
+            <div class="media__galleries-item" 
+                v-for="(item,index) in this.galleries"
+                :key="index">
+                <h2 class="media__galleries-title">{{item.title}}</h2>
+                <!-- <img class="symbol-bottom" src="~/assets/images/flower.png" /> -->
+                <Gallery :page="item.gallery"/>
+            </div>
+            
+        </div>
     </section>
 </template>
 
@@ -27,10 +37,12 @@
 import axios from 'axios';
 import Config from '@/config.js';
 import PageHeader from '@/components/PageHeader';
+import Gallery from '@/components/Gallery';
 
 export default {
     components:{
-        PageHeader
+        PageHeader,
+        Gallery
     },
     head () {
         return {
@@ -46,16 +58,14 @@ export default {
         ])
         return {
             page: page.data[0],
-            articles: page.data[0].acf.media_articles            
+            articles: page.data[0].acf.media_articles,
+            galleries: page.data[0].acf.galleries            
         }
     },
     computed:{
         rowCount(){
             return Math.ceil(this.articles.length / 3);
         }
-    },
-    mounted(){
-        console.log(this.articles);
     }
     
 }

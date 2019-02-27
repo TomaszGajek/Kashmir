@@ -16,7 +16,7 @@
     background-color: #fefefe;
     margin: 15% auto; 
     width: 90%; 
-    max-width:600px;
+    max-width:400px;
     position:relative;
   }
   
@@ -51,12 +51,16 @@
     p {
       color:#4e6902;
       margin:0;
+      text-align:center;
+      text-transform:uppercase;
     }
   }
 
   .message-error{
       border:1px solid #ed1c24;
       padding:20px;
+      text-align:center;
+      text-transform:uppercase;
 
       li {
         list-style:none;

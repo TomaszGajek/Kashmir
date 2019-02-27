@@ -23,6 +23,12 @@ module.exports = {
   */
   loading: { color: '#466502' },
 
+  loadingIndicator: {
+    name: 'chasing-dots',
+    color: '#000000',
+    background: 'white'
+  },
+
   /*
   ** Global CSS
   */
@@ -34,7 +40,8 @@ module.exports = {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    { src: '~/plugins/vue-lazyload', ssr: false }
+    { src: '~/plugins/vue-lazyload', ssr: false },
+    { src: '~/plugins/vue-clazy-load', ssr: false }
   ],
 
   /*

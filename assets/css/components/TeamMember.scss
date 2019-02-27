@@ -12,8 +12,8 @@
     -webkit-box-align:center;
         -ms-flex-align:center;
             align-items:center;
-    width:33.33%;
-    padding:20px 80px;
+    width:32%;
+    padding:0px;
 
     &:hover .team-preview__line {
         span:nth-child(1){            
@@ -32,6 +32,8 @@
 
     &__line{
         position:relative;
+        width:100%;
+        padding:10px;
         
         span{
             position:absolute;
@@ -68,14 +70,14 @@
         }
 
     }
-
+    
     &__image{
         background-repeat:no-repeat;
         background-size:cover;
         background-position:center;
-        height:400px;
-        width:400px;
-        margin:10px;
+        height:350px;
+        width:100%;
+        margin:0;
     }
 
     &__title{
