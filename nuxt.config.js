@@ -41,7 +41,9 @@ module.exports = {
   */
   plugins: [
     { src: '~/plugins/vue-lazyload', ssr: false },
-    { src: '~/plugins/vue-clazy-load', ssr: false }
+    { src: '~/plugins/vue-clazy-load', ssr: false },
+    { src: '~/plugins/vue-viewport', ssr: false },
+    { src: '~/plugins/vue-observer', ssr: false }
   ],
 
   /*

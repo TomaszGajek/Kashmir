@@ -1,5 +1,5 @@
 <template>
-    <nuxt-link :to="`/o-nas/${member.slug}`" class="team-preview">
+    <nuxt-link :to="`/o-nas/${member.slug}`" class="team-preview" v-in-viewport.once>
         <div class="team-preview__line">
             <span></span>
             <span></span>

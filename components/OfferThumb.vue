@@ -1,5 +1,5 @@
 <template>
-    <div class="thumb">
+    <div class="thumb" v-in-viewport.once>
         <clazy-load :src="this.item.featured_image.url_large[0]">
             <transition name="fade">
                 <div class="thumb__image" :style="{backgroundImage:`url('${this.item.featured_image.url_large[0]}')`}"></div>

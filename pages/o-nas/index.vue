@@ -4,10 +4,10 @@
         <section class="about">
             <div class="container about__container">
                 <img src="~/assets/images/flower.png" />
-                <h4 class="text">{{this.page.acf.text}}</h4>
-                <h2>{{this.page.acf.slogan}}</h2>
+                <h4 class="text" v-in-viewport.once>{{this.page.acf.text}}</h4>
+                <h2 v-in-viewport.once>{{this.page.acf.slogan}}</h2>
                 <img src="~/assets/images/symbol.png"/>
-                <p>{{this.page.acf.description}}</p>
+                <p v-in-viewport.once>{{this.page.acf.description}}</p>
                 <LinkButton :link="page.acf.link"/>
             </div>
             <div class="about-bg">
@@ -15,8 +15,8 @@
             </div>
             <div class="container about__container">
                 <img src="~/assets/images/flower.png" />
-                <h4 class="text">{{this.page.acf.team_text}}</h4>
-                <h2>{{this.page.acf.team_slogan}}</h2>
+                <h4 class="text" v-in-viewport.once>{{this.page.acf.team_text}}</h4>
+                <h2 v-in-viewport.once>{{this.page.acf.team_slogan}}</h2>
             </div>
             <div class="container">
                 <div class="team-wrapper">

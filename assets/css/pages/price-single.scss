@@ -23,7 +23,20 @@
             color:black;
         }
     }
+    &__content.in-viewport {
+        -webkit-animation-name: fadeInUp;
+        animation-name: fadeInUp;
+        -webkit-animation-duration: 1.5s;
+        animation-duration: 1.5s;
+    }
     &__content:nth-child(even){
         background:#f3f4f6;
+    }
+
+    &__header.in-viewport {
+        -webkit-animation-name: fadeInUp;
+        animation-name: fadeInUp;
+        -webkit-animation-duration: 1.5s;
+        animation-duration: 1.5s;
     }
 }

@@ -8,6 +8,13 @@
     }
 }
 
+.contact-info.in-viewport {
+    -webkit-animation-name: fadeInUp;
+    animation-name: fadeInUp;
+    -webkit-animation-duration: 1.5s;
+    animation-duration: 1.5s;
+}
+
 .contact{
     &__container{
         background: #f3f4f6;
@@ -31,5 +38,11 @@
         p{
             text-align: center;
         }
+    }
+    &__column.in-viewport {
+        -webkit-animation-name: fadeInUp;
+        animation-name: fadeInUp;
+        -webkit-animation-duration: 1.5s;
+        animation-duration: 1.5s;
     }
 }

@@ -2,7 +2,7 @@
   <div class="gallery-container">
     <gallery :images="listOfImages" :index="index" @close="index = null"></gallery>
     <div class="gallery-wrapper">
-    <div class="image-line" v-for="(image, imageIndex) in page" :key="imageIndex">
+    <div class="image-line" v-for="(image, imageIndex) in page" :key="imageIndex" v-in-viewport.once>
         <span></span>
         <span></span>
         <span></span>

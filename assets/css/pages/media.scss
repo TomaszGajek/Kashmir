@@ -48,6 +48,12 @@
         }
 
     }
+    &__thumb.in-viewport {
+        -webkit-animation-name: fadeInUp;
+        animation-name: fadeInUp;
+        -webkit-animation-duration: 1.5s;
+        animation-duration: 1.5s;
+    }
 
     &__thumb-image{
         height:350px;
@@ -81,8 +87,16 @@
     &__galleries{
         margin-bottom:50px;
     }
+
     &__galleries-title{
         margin:80px 0;
+    }
+
+    &__galleries-item.in-viewport {
+        -webkit-animation-name: fadeInUp;
+        animation-name: fadeInUp;
+        -webkit-animation-duration: 1.5s;
+        animation-duration: 1.5s;
     }
 }
 .link-button--media{

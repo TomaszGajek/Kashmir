@@ -6,7 +6,7 @@
             :key="index" 
             :data-background="item.image">
             <div class="main-slider__overlay"></div>
-            <div class="main-slider__content">
+            <div class="main-slider__content" v-in-viewport.once>
                 <p>{{item.text}}</p>
                 <h2>{{item.title}}</h2> 
                 <LinkButton :link="item.link" />

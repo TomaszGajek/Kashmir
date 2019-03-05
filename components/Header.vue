@@ -3,7 +3,7 @@
         <nav class="navigation" :class="[ isScrolling ? 'isScrolling' : '' ]">
             <div class="container navigation__container">
                 <nuxt-link to="/" ><img  class="navigation__logo" src="~/assets/images/logo.png"/></nuxt-link>
-                <div class="navigation__wrapper">
+                <div class="navigation__wrapper" :class="[isOpen ? 'isOpen':'']">
                     <ul class="navigation__list">
                         <li class="navigation__item" v-for="page in parent" :key="page.ID">
                             <nuxt-link 
@@ -32,6 +32,11 @@
                     <Reservation/>
                     <Socials/>
                 </div>
+            </div>
+            <div class="navigation__hamburger" @click="toggleNav">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
         </nav>
         <div class="arrow-down" v-if="isScrolling" @click="this.returnTop">
@@ -77,6 +82,10 @@ export default {
         },
         returnTop(){
             window.scrollTo({top:0,left:0,behavior:"smooth"});
+        },
+        toggleNav(){
+            console.log('click');
+            this.isOpen = !this.isOpen;
         }
 
     },
@@ -97,7 +106,8 @@ export default {
         return{            
             pages:[],
             isDropped: false,
-            isScrolling:false
+            isScrolling:false,
+            isOpen:false
             
         }
     },

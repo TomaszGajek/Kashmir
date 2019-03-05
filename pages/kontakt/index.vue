@@ -4,14 +4,15 @@
         <div class="container about__container">
             <img src="~/assets/images/flower.png" />
         </div>
-        <div class="contact-info" v-html="this.page.content.rendered">
+        <div class="contact-info" v-html="this.page.content.rendered" v-in-viewport.once>
 
         </div>
         <div class="contact__container">
         <div class="contact__wrapper">
                 <div class="contact__column" 
                     v-for="(item,index) in this.columns"
-                    :key="index">
+                    :key="index" 
+                    v-in-viewport.once>
                         <img :src="item.icon" />
                         <div class="contact__text" v-html="item.text"></div>
                     </div>
@@ -19,7 +20,7 @@
         </div>    
         <div class="container about__container">
             <img src="~/assets/images/flower.png" />
-            <h2>{{this.page.acf.contact_slogan}}</h2>
+            <h2 v-in-viewport.once>{{this.page.acf.contact_slogan}}</h2>
             <img src="~/assets/images/symbol.png"/>
         </div>
         

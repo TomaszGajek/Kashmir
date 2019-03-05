@@ -12,6 +12,7 @@
             :key="item.id"
             v-lazy:background-image="item.featured_image.url[0]"
             :to="`/galeria/${item.slug}`"
+            v-in-viewport.once
             >
                 <div class="gallery__overlay">
                     <div class="gallery__line">

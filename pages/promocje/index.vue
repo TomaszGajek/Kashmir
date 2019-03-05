@@ -12,14 +12,14 @@
             <div class="price-list">
                
                 <div class="price-list__box" v-for="(title,index) in price_list" :key="index">                    
-                    <div class="price-list__header" v-if="title.price_list_title">
+                    <div class="price-list__header" v-if="title.price_list_title" v-in-viewport.once>
                         <img  class="price-list__image" src="~/assets/images/flower.png" />
                         <h2 class="price-list__title">
                             {{title.price_list_title}}
                         </h2>
                         <img  class="price-list__image" src="~/assets/images/symbol.png"/>
                     </div>
-                    <div class="price-list__content" v-for="item in title.price_list_box">
+                    <div class="price-list__content" v-for="item in title.price_list_box" v-in-viewport.once>
                         <p>{{item.price_list_name}}</p>
                         <p>{{item.price_list_cost}}</p>
                         

@@ -10,11 +10,11 @@
         <section class="about">
             <div class="container about__container">
                 <img src="~/assets/images/flower.png" />
-                <h4 class="text">{{this.page.acf.about_text}}</h4>
-                <h2>{{this.page.acf.about_slogan}}</h2>
+                <h4 class="text" v-in-viewport.once>{{this.page.acf.about_text}}</h4>
+                <h2 v-in-viewport.once>{{this.page.acf.about_slogan}}</h2>
                 <img src="~/assets/images/symbol.png"/>
-                <p>{{this.page.acf.about_description}}</p>
-                <LinkButton :link="page.acf.about_link"/>
+                <p v-in-viewport.once>{{this.page.acf.about_description}}</p>
+                <LinkButton :link="page.acf.about_link" />
             </div>
         </section>
         <section class="offer">

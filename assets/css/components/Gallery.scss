@@ -92,6 +92,12 @@
 
      }
 }
+.image-line.in-viewport {
+    -webkit-animation-name: fadeInUp;
+    animation-name: fadeInUp;
+    -webkit-animation-duration: 1.5s;
+    animation-duration: 1.5s;
+}
 .gallery-container{
     display:-webkit-box;
     display:-ms-flexbox;

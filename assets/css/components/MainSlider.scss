@@ -1,3 +1,7 @@
+@mixin css-lock($min-size:20,$max-size:40,$min-width:320,$max-width:1600,$property:font-size,$unit:px){    
+    #{$property}: calc( #{$min-size}#{$unit} + (#{$max-size} - #{$min-size}) * ((100vw - #{$min-width}#{$unit}) / (#{$max-width} - #{$min-width})));
+}
+
 .main-slider{
     &__slide{
         height:750px;
@@ -13,11 +17,8 @@
         bottom:0;
         left:0;
         background: rgba(255,255,255,1);
-background: -moz-linear-gradient(left, rgba(255,255,255,1) 0%, rgba(255,255,255,0.58) 42%, rgba(255,255,255,0.57) 43%, rgba(255,255,255,0.29) 71%, rgba(255,255,255,0) 100%);
 background: -webkit-gradient(left top, right top, color-stop(0%, rgba(255,255,255,1)), color-stop(42%, rgba(255,255,255,0.58)), color-stop(43%, rgba(255,255,255,0.57)), color-stop(71%, rgba(255,255,255,0.29)), color-stop(100%, rgba(255,255,255,0)));
-background: -webkit-linear-gradient(left, rgba(255,255,255,1) 0%, rgba(255,255,255,0.58) 42%, rgba(255,255,255,0.57) 43%, rgba(255,255,255,0.29) 71%, rgba(255,255,255,0) 100%);
-background: -o-linear-gradient(left, rgba(255,255,255,1) 0%, rgba(255,255,255,0.58) 42%, rgba(255,255,255,0.57) 43%, rgba(255,255,255,0.29) 71%, rgba(255,255,255,0) 100%);
-background: -ms-linear-gradient(left, rgba(255,255,255,1) 0%, rgba(255,255,255,0.58) 42%, rgba(255,255,255,0.57) 43%, rgba(255,255,255,0.29) 71%, rgba(255,255,255,0) 100%);
+background: -webkit-gradient(linear, left top, right top, from(rgba(255,255,255,1)), color-stop(42%, rgba(255,255,255,0.58)), color-stop(43%, rgba(255,255,255,0.57)), color-stop(71%, rgba(255,255,255,0.29)), to(rgba(255,255,255,0)));
 background: linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(255,255,255,0.58) 42%, rgba(255,255,255,0.57) 43%, rgba(255,255,255,0.29) 71%, rgba(255,255,255,0) 100%);
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ffffff', GradientType=1 );
     }
@@ -46,6 +47,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
             font-weight:400;
             color:#959595;
             text-transform:uppercase;
+            @include css-lock(12,16);
         }
         h2{
             font-family: 'Marcellus SC', serif;
@@ -53,6 +55,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
             color:black;
             font-weight:400;
             margin-top:10px;
+            @include css-lock(24,40);
         }        
     }
     &__nav {
@@ -89,5 +92,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
         margin:2px 10px;
         outline:0;
         cursor:pointer;
+    }
+}
+
+@media(max-width:1378px){
+    .main-slider__slide{
+        height:600px;
     }
 }

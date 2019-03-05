@@ -19,7 +19,7 @@
                         v-for="(item,index) in this.offer"
                         :key="index">  
                         <div class="offer-single__overlay">
-                            <clazy-load :src="item.featured_image.url_large[0]">
+                            <clazy-load :src="item.featured_image.url_large[0]" v-if="item.featured_image.url_large[0]">
                                 <transition name="fade">
                                     <div class="offer-single__image" :style="{backgroundImage:`url('${item.featured_image.url_large[0]}')`}"></div>
                                 </transition>
@@ -100,12 +100,35 @@ export default {
             })
             
         }
-    },
-    mounted(){
-        console.log(this.offer)
     }
 }
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
     @import '@/assets/css/pages/offer-single.scss';
+
+    @keyframes acrossIn {
+      0% {
+        transform: translate3d(-10%, 0, 0);
+      }
+      100% {
+        transform: translate3d(0, 0, 0);
+      }
+    }
+    @keyframes acrossOut {
+      0% {
+        transform: translate3d(0, 0, 0);
+      }
+      100% {
+        transform: translate3d(10%, 0, 0);
+      }
+    }
+
+    .page-enter-active {
+      animation: acrossIn .40s ease-out both;
+    } 
+    .page-leave-active {
+      animation: acrossOut .60s ease-in both;
+    }     
+
+
 </style>

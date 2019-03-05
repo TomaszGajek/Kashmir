@@ -1,11 +1,11 @@
 <template>
     <section class="media">
         <PageHeader :page="page" />
-        <h2>Piszą o nas w mediach</h2>
+        <h2 v-in-viewport.once>Piszą o nas w mediach</h2>
         <img class="symbol-bottom" src="~/assets/images/flower.png" />
         <div class="media__articles">
             <div class="media__row" v-for="i in rowCount">
-                <div class="media__thumb" v-for="(item,index) in articles.slice((i-1)*3,i*3)">
+                <div class="media__thumb" v-for="(item,index) in articles.slice((i-1)*3,i*3)" v-in-viewport.once>
                     <div class="media__thumb-image" v-lazy:background="item.img">
                         <div class="media__thumb-text">
                             <p>{{item.title}}</p>
@@ -22,7 +22,8 @@
         <div class="media__galleries">
             <div class="media__galleries-item" 
                 v-for="(item,index) in this.galleries"
-                :key="index">
+                :key="index"
+                v-in-viewport.once>
                 <h2 class="media__galleries-title">{{item.title}}</h2>
                 <!-- <img class="symbol-bottom" src="~/assets/images/flower.png" /> -->
                 <Gallery :page="item.gallery"/>

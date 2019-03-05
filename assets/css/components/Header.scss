@@ -1,5 +1,5 @@
-header{
-    
+@mixin css-lock($min-size:20,$max-size:40,$min-width:320,$max-width:1600,$property:font-size,$unit:px){    
+    #{$property}: calc( #{$min-size}#{$unit} + (#{$max-size} - #{$min-size}) * ((100vw - #{$min-width}#{$unit}) / (#{$max-width} - #{$min-width})));
 }
 
 .navigation.isScrolling{
@@ -26,6 +26,24 @@ header{
             -ms-flex-align:center;
                 align-items:center;
     }
+
+    &__hamburger{
+        display:none;
+        position:absolute;
+        top:14px;
+        right:20px;
+        height:38px;
+        width:40px;
+        z-index:2;
+        cursor:pointer;
+        span{
+            margin-top:8px;
+            background:black;
+            height:2px;
+            width:100%;
+            display:block;
+        }
+    }
     &__wrapper{
         display:-webkit-box;
         display:-ms-flexbox;
@@ -34,6 +52,7 @@ header{
             -ms-flex-align:center;
                 align-items:center;
     }
+    
     &__list{
         display:-webkit-box;
         display:-ms-flexbox;
@@ -60,6 +79,7 @@ header{
         border:1px solid transparent;
         position:relative;
         padding:14px 20px;
+        @include css-lock(9,12);
         span {
             position:absolute;
             background:#555555;
@@ -140,6 +160,8 @@ header{
         display: -webkit-box;
         display: -ms-flexbox;
         display: flex;
+        -ms-flex-wrap:wrap;
+            flex-wrap:wrap;
         -webkit-box-pack: center;
             -ms-flex-pack: center;
                 justify-content: center;
@@ -158,6 +180,7 @@ header{
         text-transform:uppercase;
         color:#555555;
         font-size:14px;
+        @include css-lock(10,14);
         padding:10px 20px;
         display:block;
         &:hover span{
@@ -192,4 +215,71 @@ header{
             align-items:center;    
     cursor:pointer;
 
+}
+
+/* RWD */
+
+
+
+@media(max-width:1440px){
+
+    .navigation__link{
+        padding:14px 10px;
+    }
+    .navigation__sub-item a{
+        padding:10px;
+    }
+    
+
+}
+
+@media(max-width:1240px){
+    .navigation__logo {
+        max-width:125px;
+    }
+    .navigation__sub-list{
+        top:70px;
+    }
+}
+
+@media(max-width:1140px){
+    .navigation__hamburger{
+        display:block;
+    }
+    .navigation__wrapper{
+        opacity:0;
+        visibility:hidden;
+        -webkit-transition:all 0.3s ease-in-out;
+        transition:all 0.3s ease-in-out;
+        position:fixed;
+        height:100vh;
+        width:100%;
+        top:0;
+        left:0;
+        background:#ffffff;
+        -webkit-box-pack: center;
+            -ms-flex-pack: center;
+                justify-content: center;
+        -webkit-box-orient:vertical;
+        -webkit-box-direction:normal;
+            -ms-flex-direction:column;
+                flex-direction:column;
+    }
+    .navigation__link{
+        text-align:center;
+    }
+    .navigation__wrapper.isOpen {
+        opacity:1;
+        visibility:visible;
+    }
+    .reservation-link{
+        height:auto;
+    }
+    .navigation__list{
+        margin:0;
+        -webkit-box-orient:vertical;
+        -webkit-box-direction:normal;
+            -ms-flex-direction:column;
+                flex-direction:column;
+    }
 }

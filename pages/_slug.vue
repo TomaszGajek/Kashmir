@@ -28,20 +28,22 @@ export default {
             ]
         }
     },
-    asyncData ({ params }) {
-        return axios.get(`${Config.root}/wp-json/wp/v2/pages/?slug=${params.slug}`)
-        .then(response => {            
-            return { page: response.data[0] }                     
-        })
-        .catch((error) => {
-            return { error: error }
-        })
-    },
-    data() {
+    // asyncData ({ params }) {
+    //     return axios.get(`${Config.root}/wp-json/wp/v2/pages/?slug=${params.slug}`)
+    //     .then(response => {            
+    //         return { page: response.data[0] }                     
+    //     })
+    //     .catch((error) => {
+    //         return { error: error }
+    //     })
+    // },
+
+    async asyncData({ params }) {
+        let [page] = await Promise.all([
+            axios.get(`${Config.root}/wp-json/wp/v2/pages/?slug=${params.slug}`)
+        ])
         return {
-            page: {},
-            error: [],
-            empty: false
+            page: page.data[0]         
         }
     }
 

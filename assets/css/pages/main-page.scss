@@ -1,3 +1,7 @@
+@mixin css-lock($min-size:20,$max-size:40,$min-width:320,$max-width:1600,$property:font-size,$unit:px){    
+    #{$property}: calc( #{$min-size}#{$unit} + (#{$max-size} - #{$min-size}) * ((100vw - #{$min-width}#{$unit}) / (#{$max-width} - #{$min-width})));
+  }
+
 .main-page{
     position:relative;
 }
@@ -14,8 +18,10 @@
 .about{
     p {
         max-width:650px;
-        text-align:center;
+        
     }
+
+    
     img {
         margin:20px 0;
     }
@@ -35,6 +41,26 @@
                 align-items:center;
         padding:50px 100px;
         text-align:center;
+    }
+
+    h4.in-viewport {
+        -webkit-animation-name: fadeInUp;
+        animation-name: fadeInUp;
+        -webkit-animation-duration: 1.5s;
+        animation-duration: 1.5s;
+        
+    }
+    h2.in-viewport {
+        -webkit-animation-name: fadeInUp;
+        animation-name: fadeInUp;
+        -webkit-animation-duration: 1.5s;
+        animation-duration: 1.5s;
+    }
+    p.in-viewport {
+        -webkit-animation-name: fadeInUp;
+        animation-name: fadeInUp;
+        -webkit-animation-duration: 1.5s;
+        animation-duration: 1.5s;
     }
 
 }
@@ -79,5 +105,26 @@
                 align-items:center;
         padding:3% 26% 0% 26%;
         text-align:center;
+    }
+}
+
+.main-slider__content.in-viewport {
+    -webkit-animation-name: fadeIn;
+    animation-name: fadeIn;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+}
+
+/* RWD */
+
+@media(max-width:1540px){
+    .offer__wrap{
+        justify-content: center;
+    }
+}
+@media(max-width:1378px){
+
+    .main-page-overlay {
+        height:500px;
     }
 }
