@@ -76,3 +76,37 @@
         text-align: center;
     }
 }
+@media(max-width:1020px){
+    .team-wrapper{
+        width:auto;
+    }
+}
+@media(max-width:850px){
+    .about-bg{
+        height:580px;
+    }
+}
+
+@media(max-width:768px){
+    .member{
+        padding:0 20px;
+    }
+    .member__photo {
+        width:80vw;
+    }
+}
+
+@media(max-width:650px) {
+    .about-bg{
+        height:400px;
+    }
+}
+
+@media(max-width:400px){
+    .about-bg{
+        height:300px;
+    }   
+    .member__photo {
+        height:50vh;
+    }
+}

@@ -170,4 +170,24 @@
 
 .offer-bg {background-size: cover;height: 450px;background-repeat: no-repeat;background-position: center center;margin-top:40px;}
 
+@media(max-width:768px){
 
+    .offer-single__content-wrapper {
+        width:100%;
+    }
+    .aside {
+        width:100%;
+        padding:0 50px;
+    }
+    
+}
+
+@media(max-width:600px){
+    .offer-single__content-wrapper{
+        padding:0 20px;
+    }
+    .aside {
+        padding:0 20px;
+    }
+
+}

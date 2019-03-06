@@ -44,3 +44,18 @@
     max-width:600px;
 
 }
+
+@media(max-width:768px){
+    .container--voucher{
+        padding:20px;
+    }
+    .voucher__img{
+        max-width:80%;
+    }
+    .voucher__content{
+        max-width:80%;
+        margin:0 auto;
+    }
+
+    
+}

@@ -1,3 +1,7 @@
+@mixin css-lock($min-size:20,$max-size:40,$min-width:320,$max-width:1600,$property:font-size,$unit:px){    
+    #{$property}: calc( #{$min-size}#{$unit} + (#{$max-size} - #{$min-size}) * ((100vw - #{$min-width}#{$unit}) / (#{$max-width} - #{$min-width})));
+  }
+
 .review-wrapper{
     position: relative;
     padding-bottom:60px;
@@ -36,6 +40,7 @@
             font-size:16px;
             font-weight:400;
             color:#959595;
+            @include css-lock(12,16);
         }
         h4 {
             color:#959595;
@@ -96,4 +101,32 @@
             padding:0;
         }
     }
+}
+
+/* RWD */
+
+@media(max-width:900px){
+    .review-wrapper{
+        width:90%;
+    }
+    .review__container{
+        padding:0 20px;
+    }
+    .review-slider__content{
+        padding:0 100px;
+    }
+
+}
+
+@media(max-width:600px){
+    .review-wrapper {
+        width: 100%;
+    }
+    .review .review-wrapper img {
+        max-width:25px;
+    }
+    .review-slider__content{
+        padding:0 63px;
+    }
+
 }

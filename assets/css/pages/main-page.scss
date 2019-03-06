@@ -118,13 +118,64 @@
 /* RWD */
 
 @media(max-width:1540px){
+    .offer {
+        width:1400px;
+    }
     .offer__wrap{
-        justify-content: center;
+        -webkit-box-pack: center;
+            -ms-flex-pack: center;
+                justify-content: center;
+    }
+}
+@media(max-width:1440px){
+    .offer {
+        width:1300px;
     }
 }
 @media(max-width:1378px){
 
     .main-page-overlay {
         height:500px;
+    }
+}
+@media(max-width:1340px){
+    .offer{
+        width:1200px;
+    }
+}
+@media(max-width:1240px){
+    .offer{
+        width:1100px;
+    }
+}
+
+@media(max-width:1140px){
+    .offer{
+        width:100%;
+    }
+}
+
+@media(max-width:900px){
+    .about__container{
+        padding:0 20px;
+        padding-top:20px;
+    }
+}
+
+@media(max-width:768px){
+    .about img {
+        max-width:40px;
+    }
+    .about__container img {
+        max-width:40px;
+    }
+    .about__container h4 {
+        margin-bottom:0;
+        margin-top:0;
+    }
+}
+@media(max-width:600px){
+    .main-page-overlay{
+        height:400px;
     }
 }

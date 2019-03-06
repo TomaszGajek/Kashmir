@@ -84,28 +84,28 @@ h1 {
   font-weight:400;
   font-size:40px;
   font-family: "Marcellus SC", serif;
-  @include css-lock(28,40);
+  @include css-lock(22,40);
 }
 h2{
   color:black;
   font-weight:400;
   font-size:30px;
   font-family: "Marcellus SC", serif;
-  @include css-lock(24,30);
+  @include css-lock(20,30);
 }
 h3{
   color:black;
   font-weight:400;
   font-size:28px;
   font-family: "Marcellus SC", serif;
-  @include css-lock(20,28);
+  @include css-lock(18,28);
 }
 h4 {
   color:black;
   font-weight:400;
   font-size:24px;
   font-family: "Marcellus SC", serif;
-  @include css-lock(12,24);
+  @include css-lock(14,24);
 }
 .content--default{
   padding:40px 0;
@@ -183,6 +183,7 @@ iframe {
   font-size:12px;
   font-weight:700;
   text-align:center;
+  @include css-lock(10,12);
 } 
 .bread-crumbs h1 {
   text-align:center;
@@ -194,6 +195,7 @@ text-decoration:none;
 text-transform:uppercase;
 -webkit-transition:all 0.3s ease-in-out;
 transition:all 0.3s ease-in-out;
+@include css-lock(10,12);
 } 
 
 .bread-crumbs a:hover{
@@ -242,7 +244,7 @@ transition:all 0.3s ease-in-out;
   margin: 0;
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
-  @include css-lock(16,20);
+  @include css-lock(12,20);
 
 }
 .map-wrapper{
@@ -252,46 +254,6 @@ transition:all 0.3s ease-in-out;
   height:500px;
 }
 
-/* RWD */
-
-@media(max-width:1550px){
-
-  .container {
-    width:1400px;
-  }
-  
-
-}
-
-
-@media(max-width:1440px) {
-  .container {
-      width:1300px;
-  }
-  
-}
-
-@media(max-width:1340px){
-  .container {
-    width:1200px;
-  }
-}
-
-@media(max-width:1240px){
-  .container{
-    width:1100px;
-  }
-  main {
-    padding-top:72px;
-  }
-
-}
-
-@media(max-width:1140px){
-  .container{
-    width:100%;
-  }
-}
 
 
 /* Animations */
@@ -511,4 +473,83 @@ transition:all 0.3s ease-in-out;
   animation-name: fadeInRight;
     -webkit-animation-duration: 1s;
     animation-duration: 1s;
+}
+
+/* RWD */
+
+@media(max-width:1550px){
+
+  .container {
+    width:1400px;
+  }
+  
+
+}
+
+@media(max-width:1440px) {
+  .container {
+      width:1300px;
+  }
+  
+}
+
+@media(max-width:1340px){
+  .container {
+    width:1200px;
+  }
+}
+
+@media(max-width:1240px){
+  .container{
+    width:1100px;
+  }
+  main {
+    padding-top:72px;
+  }
+
+}
+
+@media(max-width:1140px){
+  .container{
+    width:100%;
+  }
+}
+@media(max-width:1000px){
+  .content--default{
+    width:100%;
+    padding-left:20px;
+    padding-right:20px;
+  }
+  
+}
+@media(max-width:768px){
+  .container--split {
+    flex-direction:column;
+  }
+  .voucher-link{
+    top:300px;
+  }
+
+}
+
+@media(max-width:600px){
+  .voucher-link{
+      bottom:0;
+      width:100%;
+      transform:none;
+      top:auto;
+      left:0;
+      
+
+  }
+  .voucher-text {
+    text-align:center;
+    background:rgba(98, 134, 0, .8);
+  }
+
+  .map-frame{
+    height:350px;
+    margin-bottom:20px;
+  }
+  
 }

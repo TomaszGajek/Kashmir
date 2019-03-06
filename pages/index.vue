@@ -25,7 +25,6 @@
         <section class="review">
             <div class="container review__container">
                 <img src="~/assets/images/flower.png" />
-                <h4 class="text">{{this.page.acf.review_text}}</h4>
                 <h2>{{this.page.acf.review_slogan}}</h2>
                 <img src="~/assets/images/symbol.png"/>
             </div>

@@ -40,3 +40,13 @@
         animation-duration: 1.5s;
     }
 }
+
+@media(max-width:768px){
+    .price-list__image{
+        max-width:40px;
+        margin:20px auto;
+    }
+    .price-list__box p {
+        text-align: left;
+    }
+}

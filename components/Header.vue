@@ -80,14 +80,9 @@ export default {
                 this.isScrolling = false
             }       
         },
-        returnTop(){
-            window.scrollTo({top:0,left:0,behavior:"smooth"});
-        },
-        toggleNav(){
-            console.log('click');
-            this.isOpen = !this.isOpen;
-        }
-
+        returnTop(){ window.scrollTo({top:0,left:0,behavior:"smooth"}); },
+        toggleNav(){ this.isOpen = !this.isOpen; },
+        hideMenu(){ this.isOpen = false; }
     },
     computed:{
         parent(){
@@ -100,6 +95,8 @@ export default {
     watch:{
         '$route'(){
             document.querySelector('.navigation__sub-list').classList.remove('open');
+            this.isOpen = false;
+            // document.querySelector('.navigation__wrapper').classList.remove('isOpen');
         }
     },
     data(){
