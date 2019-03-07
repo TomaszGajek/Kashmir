@@ -216,8 +216,8 @@ transition:all 0.3s ease-in-out;
 
 .voucher-link {
   position:fixed;
-  right:-110px;
-  top:400px;
+  right:-101px;
+  top:45%;
   display: block;
   padding: 3px;
   text-decoration: none;
@@ -237,14 +237,14 @@ transition:all 0.3s ease-in-out;
 .voucher-text{
   // background: black;
   background:#628600;
-  font-size: 20px;
+  font-size: 18px;
   color: #ffffff;
   text-transform: uppercase;
   padding: 10px 20px;
   margin: 0;
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
-  @include css-lock(12,20);
+  // @include css-lock(12,20);
 
 }
 .map-wrapper{
@@ -526,9 +526,9 @@ transition:all 0.3s ease-in-out;
   .container--split {
     flex-direction:column;
   }
-  .voucher-link{
-    top:300px;
-  }
+  // .voucher-link{
+  //   top:300px;
+  // }
 
 }
 
