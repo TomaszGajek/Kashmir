@@ -37,7 +37,38 @@
                     </nuxt-link>
                 </div>
                 
-            </div> 
+            </div>
+            <div class="container content container--narrow container--split" v-else-if="this.parent === 69">
+                <div class="offer-single__content-wrapper">
+                    <article v-html="this.page.content.rendered"></article>
+                    <h4>Zabiegi dedykowane dla mam</h4>
+                    <div class="offer-single__tabs" v-for="(item,index) in this.treatments" :key="index">
+                        <div class="offer-single__tabs-title"><p>+ {{item.title.rendered}}</p>
+                            <div class="offer-single__tabs-content" 
+                                v-for="i in sectionLinks(item.id)"
+                                :key="i.id">
+                            <nuxt-link
+                                :to="`/oferta/${page.slug}/${i.slug}`">{{i.title.rendered}}</nuxt-link>
+                            </div>    
+                        </div>
+                    </div>
+                    <div class="offer-single__gallery-wrapper" v-if="page.acf.gallery">
+                        <h4>Galeria</h4>
+                        <Gallery :page="page.acf.gallery" />
+                    </div>
+                    <img class="symbol-bottom" src="~/assets/images/symbol.png"/>
+                </div>
+                <aside class="aside">
+                    <h4><p>Oferta</p></h4>
+                    <nuxt-link 
+                        class="link-button"
+                        :to="`/oferta/${item.slug}`"
+                        v-for="(item,index) in this.all"
+                        :key="index">   
+                        <span class="link-button__text" v-html="item.title.rendered"></span>                                         
+                    </nuxt-link>
+                </aside>
+            </div>
             <div class="container content container--narrow container--split" v-else>
                 <div class="offer-single__content-wrapper">
                     <article v-html="this.page.content.rendered"></article>
@@ -95,11 +126,22 @@ export default {
             all:offer.data.filter((single)=>{
                 return single.parent === 0
             }),
-            offer: offer.data.filter((single)=>{
-                return single.parent == page.data[0].id
-            })
+            offer: offer.data.filter(single => single.parent == page.data[0].id && single.parent != 69 ),
+            children:offer.data,
+            treatments: offer.data.filter(single => single.parent === 69 )
+
             
         }
+    },
+    methods: {
+        sectionLinks(itemId){
+            return this.children.filter((link)=>{
+                return link.parent === itemId;
+            })
+        }
+    },
+    mounted(){
+        console.log(this.children);
     }
 }
 </script>
