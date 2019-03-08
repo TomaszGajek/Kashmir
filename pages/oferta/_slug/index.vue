@@ -41,16 +41,9 @@
             <div class="container content container--narrow container--split" v-else-if="this.parent === 69">
                 <div class="offer-single__content-wrapper">
                     <article v-html="this.page.content.rendered"></article>
-                    <h4>Zabiegi dedykowane dla mam</h4>
+                    <h4>Zabiegi dedykowane dla mam:</h4>
                     <div class="offer-single__tabs" v-for="(item,index) in this.treatments" :key="index">
-                        <div class="offer-single__tabs-title"><p>+ {{item.title.rendered}}</p>
-                            <div class="offer-single__tabs-content" 
-                                v-for="i in sectionLinks(item.id)"
-                                :key="i.id">
-                            <nuxt-link
-                                :to="`/oferta/${page.slug}/${i.slug}`">{{i.title.rendered}}</nuxt-link>
-                            </div>    
-                        </div>
+                        <Tab :children="children" :item="item" :page="page"/>
                     </div>
                     <div class="offer-single__gallery-wrapper" v-if="page.acf.gallery">
                         <h4>Galeria</h4>
@@ -100,12 +93,14 @@ import axios from 'axios';
 import Config from '@/config.js';
 import Gallery from '@/components/Gallery';
 import AsideMenu from '@/components/AsideMenu';
+import Tab from '@/components/Tab';
 
 
 export default {
     components:{
         Gallery,
-        AsideMenu
+        AsideMenu,
+        Tab
     },
     head () {
         return {
@@ -123,14 +118,15 @@ export default {
         return {
             page: page.data[0],
             parent:page.data[0].id,
-            all:offer.data.filter((single)=>{
-                return single.parent === 0
-            }),
-            offer: offer.data.filter(single => single.parent == page.data[0].id && single.parent != 69 ),
+            all:offer.data.filter( single => single.parent === 0),
+            offer: offer.data.filter( single => single.parent == page.data[0].id && single.parent != 69 ),
             children:offer.data,
-            treatments: offer.data.filter(single => single.parent === 69 )
-
-            
+            treatments: offer.data.filter( single => single.parent === 69 ) 
+        }
+    },
+    data(){
+        return {
+            isOpen:false
         }
     },
     methods: {
@@ -139,9 +135,6 @@ export default {
                 return link.parent === itemId;
             })
         }
-    },
-    mounted(){
-        console.log(this.children);
     }
 }
 </script>

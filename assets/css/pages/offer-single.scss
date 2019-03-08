@@ -47,7 +47,7 @@
         background-size:cover;
         background-position:center;
         width:100%;
-        height:350px;
+        height:250px;
         -webkit-transition: -webkit-transform 1s ease-in-out;
         transition: -webkit-transform 1s ease-in-out;
         transition: transform 1s ease-in-out;
@@ -137,9 +137,7 @@
         margin: 0 auto;
         display:block;
     }
-    &__content{
-       
-    }
+    
     &__gallery-wrapper{
         h4 {
             text-align: center;
@@ -151,6 +149,68 @@
             cursor:pointer;
         }
     }
+    &__tabs-content{
+        display:-webkit-box;
+        display:-ms-flexbox;
+        display:flex;
+        -ms-flex-wrap:wrap;
+            flex-wrap:wrap;
+        -webkit-box-pack: center;
+            -ms-flex-pack: center;
+                justify-content: center;
+        height:auto;        
+    }
+    &__tabs-link{
+        overflow:hidden;
+        width:47%;        
+        margin:10px;
+        display:block;
+        position:relative;
+        height:300px;
+        &:hover .offer-single__title-wrapper {
+            opacity:0;
+        }
+        &:hover .offer-single__tabs-overlay{
+            -webkit-transform: scale(1.04);
+                    transform: scale(1.04);
+        }
+    }
+    &__tabs-title p {
+        text-transform:uppercase;
+        font-family: "Marcellus SC", serif;
+        @include css-lock(12,14);
+        border:1px solid black;
+        padding:5px 10px;
+        cursor:pointer;
+        -webkit-transition:all 0.3s ease;
+        transition:all 0.3s ease;
+        &:hover{
+            background:black;
+            color:white;
+        }
+
+    }
+    &__tabs-overlay{
+        background-repeat:no-repeat;
+        background-size:cover;
+        background-position:center;
+        
+        -webkit-transition:all 0.5s ease;
+        transition:all 0.5s ease;
+        position:absolute;
+        top:0;
+        left:0;
+        right:0;
+        bottom:0;
+        z-index:2;
+    }
+
+    &__title-item{
+       @include css-lock(14,18);
+       text-align:center;
+       padding:20px 60px;
+    }
+
     &__flower{
         display:block;
         margin:20px auto;
@@ -167,6 +227,18 @@
     }
 
 }
+
+.expand-enter-active,
+    .expand-leave-active {
+        -webkit-transition: height 1s ease;
+        transition: height 1s ease;
+        overflow: hidden;
+    }
+
+    .expand-enter,
+    .expand-leave-to {
+    height: 0;
+    }
 
 .offer-bg {background-size: cover;height: 450px;background-repeat: no-repeat;background-position: center center;margin-top:40px;}
 
@@ -188,6 +260,11 @@
     }
     .aside {
         padding:0 20px;
+    }
+
+    .offer-single__tabs-link{
+        width:100%;
+        margin:1% 0;
     }
 
 }
