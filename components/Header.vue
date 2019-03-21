@@ -31,10 +31,15 @@
                 
                     <Reservation/>
                     <Socials/>
-                    <ul class="translation-links">
-                        <li><a href="#" class="spanish notranslate" data-lang="angielski" @click="this.toggleLang">EN</a></li>
-                        <li><a href="#" class="german notranslate" data-lang="polski" @click="this.closeLang">PL</a></li>
-                    </ul>
+                    <div class="translation-links">
+                        <p class="pl notranslate" data-lang="angielski" v-if="this.lang_uk" @click="this.toggleLang">
+                            <img src="~/assets/images/uk.png"/>
+                        </p>
+                        
+                        <p class="en notranslate" data-lang="polski" v-if="this.lang_pl" @click="this.closeLang">
+                            <img src="~/assets/images/pl.png"/>
+                        </p>
+                    </div>
                 </div>
             </div>
             <div class="navigation__hamburger" @click="toggleNav">
@@ -68,6 +73,7 @@ export default {
         Socials,
         Reservation
     },
+
     
     methods:{
         simulateClick(elem){
@@ -80,7 +86,8 @@ export default {
             const canceled = !elem.dispatchEvent(evt);
         },
         toggleLang(e){
-
+            this.lang_uk = false;
+            this.lang_pl = true;
             const lang = e.currentTarget.dataset.lang;
             const frame = document.querySelector('.goog-te-menu-frame');
             const content = frame.contentDocument.body;
@@ -94,6 +101,8 @@ export default {
         },
 
         closeLang(e){
+            this.lang_uk = true;
+            this.lang_pl = false;
             const frame = document.querySelector('.goog-te-banner-frame');
             const content = frame.contentDocument.body;
             const close = content.querySelector('.goog-close-link');
@@ -140,7 +149,9 @@ export default {
             pages:[],
             isDropped: false,
             isScrolling:false,
-            isOpen:false
+            isOpen:false,
+            lang_uk:true,
+            lang_pl: false
             
         }
     },

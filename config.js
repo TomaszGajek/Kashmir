@@ -1,5 +1,5 @@
 const Config = {
-    root:'http://www.kashmirspa.pl/wp'
+    root:'https://www.kashmirspa.pl/wp'
     // root:'http://katest.devnoveo.pl/wp'
 }
 
