@@ -51,7 +51,7 @@ export default {
     asyncData ({ params }) {
         return axios.get(`${Config.root}/wp-json/wp/v2/cennik/?slug=${params.slug}`)
             .then(response => {
-                console.log(response.data);
+               
                 return { 
                     page: response.data[0],
                     price_list: response.data[0].acf.price_list

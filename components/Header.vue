@@ -31,6 +31,10 @@
                 
                     <Reservation/>
                     <Socials/>
+                    <ul class="translation-links">
+                        <li><a href="#" class="spanish notranslate" data-lang="angielski" @click="this.toggleLang">EN</a></li>
+                        <li><a href="#" class="german notranslate" data-lang="polski" @click="this.closeLang">PL</a></li>
+                    </ul>
                 </div>
             </div>
             <div class="navigation__hamburger" @click="toggleNav">
@@ -52,6 +56,8 @@
 <script>
 
 
+
+
 import axios from 'axios';
 import Config from '@/config.js';
 import Socials from '@/components/Socials';
@@ -64,6 +70,36 @@ export default {
     },
     
     methods:{
+        simulateClick(elem){
+            const evt = new MouseEvent('click', {
+                bubbles: true,
+                cancelable: true,
+                view: window
+            });
+
+            const canceled = !elem.dispatchEvent(evt);
+        },
+        toggleLang(e){
+
+            const lang = e.currentTarget.dataset.lang;
+            const frame = document.querySelector('.goog-te-menu-frame');
+            const content = frame.contentDocument.body;
+            const elems = [...content.querySelectorAll('.goog-te-menu2-item')];
+            const action = elems.filter( item => item.querySelector('.text').innerHTML === lang )
+
+            this.simulateClick(action[0])
+
+            return false;
+
+        },
+
+        closeLang(e){
+            const frame = document.querySelector('.goog-te-banner-frame');
+            const content = frame.contentDocument.body;
+            const close = content.querySelector('.goog-close-link');
+            this.simulateClick(close)
+        },
+
         toggleSubMenu(e){
             let parent = e.currentTarget.parentNode;
             let child = parent.querySelector('.navigation__sub-list')

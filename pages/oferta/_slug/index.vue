@@ -111,6 +111,7 @@ export default {
         }
     },
     async asyncData({ params }) {
+
         let [page, offer] = await Promise.all([
             axios.get(`${Config.root}/wp-json/wp/v2/oferta/?slug=${params.slug}`),
             axios.get(`${Config.root}/wp-json/wp/v2/oferta/?per_page=100`)
@@ -123,6 +124,7 @@ export default {
             children:offer.data,
             treatments: offer.data.filter( single => single.parent === 69 ) 
         }
+        
     },
     data(){
         return {

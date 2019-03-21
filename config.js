@@ -1,5 +1,6 @@
 const Config = {
-    root:'http://kashmir.devnoveo.pl/wp'
+    root:'http://www.kashmirspa.pl/wp'
+    // root:'http://katest.devnoveo.pl/wp'
 }
 
 export default Config;

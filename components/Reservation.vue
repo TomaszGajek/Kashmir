@@ -11,7 +11,7 @@ export default {
         axios.get(`${Config.root}/wp-json/acf/v3/options/options`)
             .then((response)=>{                
                 this.link= response.data;
-                console.log(this.link.acf.reservation_link);              
+                             
             })
     },
     data(){

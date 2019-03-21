@@ -21,6 +21,7 @@
   body {
     font-family: 'Raleway', sans-serif;
     overflow:auto !important;
+    top:0 !important;
   }
 
   html {
@@ -217,15 +218,15 @@ transition:all 0.3s ease-in-out;
 .voucher-link {
   position:fixed;
   right:-101px;
-  top:45%;
+  top:50%;
   display: block;
   padding: 3px;
   text-decoration: none;
   // border: 1px solid black;
   z-index:3;
   border:1px solid #628600; 
-  -webkit-transform:rotate(-90deg) translateX(50%);
-          transform:rotate(-90deg) translateX(50%);
+  -webkit-transform:rotate(-90deg) translateX(-50%);
+          transform:rotate(-90deg) translateX(-50%);
 
   &:hover .voucher-text{
     background:#628600;
@@ -252,6 +253,13 @@ transition:all 0.3s ease-in-out;
 }
 .map-frame{
   height:500px;
+}
+
+#google_translate_element {
+  display:none;
+}
+.goog-te-banner-frame{
+  display:none !important;
 }
 
 

@@ -18,8 +18,7 @@ export default {
         parent:{}
     },
     mounted(){
-        console.log(this.parent);
-        console.log(this.links);
+
     }
 }
 </script>

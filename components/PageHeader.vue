@@ -17,7 +17,7 @@ export default {
         }
     },
     mounted(){
-        console.log(this.page);
+      
     }
 }
 </script>

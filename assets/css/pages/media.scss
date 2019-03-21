@@ -59,6 +59,9 @@
         height:350px;
         width:100%;
         position:relative;
+        background-position: center;
+        background-size: cover;
+        background-repeat:no-repeat;
     }
     &__thumb-text {
         position:absolute;

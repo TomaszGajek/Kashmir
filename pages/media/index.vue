@@ -6,7 +6,7 @@
         <div class="media__articles">
             <div class="media__row" v-for="i in rowCount">
                 <div class="media__thumb" v-for="(item,index) in articles.slice((i-1)*3,i*3)" v-in-viewport.once>
-                    <div class="media__thumb-image" v-lazy:background="item.img">
+                    <div class="media__thumb-image" v-lazy:background-image="item.img">
                         <div class="media__thumb-text">
                             <p>{{item.title}}</p>
                         </div>
